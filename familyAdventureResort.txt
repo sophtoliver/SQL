@@ -1,0 +1,109 @@
+/* Assignment 3 Simple SQL Queries- Sophia Toliver */
+
+/* 1. (7) List all condos in building C, the date they were cleaned, and the full name of the staff who cleaned them in
+August. */
+
+SELECT Condos.Condo# "Condos in Building C", DateCleaned "Date Cleaned in August",  FName "First Name of What Housekeeper Cleaned”, LName "Last Name"
+ FROM Cleaning, Housekeeping, Condos, Personnel 
+  WHERE Cleaning.Condo# = Condos.Condo#
+   AND Housekeeping.HKID = Cleaning.HKID
+   AND Housekeeping.HKID = Personnel.PID
+   AND DateCleaned LIKE '2019-08%'
+   AND Bldg# = 'C';
+
+/* 2. (5) Display the activities reserved in June for more than 3 people. Include the activity description and label the output as Activities Reserved in June. */
+ 
+SELECT Description "Activities Reserved in June"
+  FROM Activities, Reservations
+     WHERE Activities.AID = Reservations.AID
+        AND NumberInParty > 3
+		AND RDate LIKE '2019-06%';
+
+/* 3. (4) List all guides who have not renewed their certifications this year. Include ID, full name, and number of days overdue. */
+
+SELECT GID, FName, LName, CertRenewDate, DateDiff(day, CertRenewDate, getdate()) "Number of Days Overdue"
+   FROM Personnel, Guides
+       WHERE Personnel.PID = Guides.GID
+           AND CertRenewDate BETWEEN '01-Jan-19' and '31-Dec-19';
+
+/* 4. (6) Management needs the names of all guides who lead an activity with an expired certificate. Display the guide's full name, the certificate renewal date, and the date and description of the ‘activity’. */
+
+SELECT FName "FName Of Who Led An Activity With Expired Cert", LName, CertRenewDate, RDate "Activity Date", Description "Activity Lead"
+    FROM Guides, Reservations, Activities, Personnel  
+        WHERE Guides.GID = Reservations.GID
+        AND Activities.AID = Reservations.AID
+		AND Personnel.PID = Guides.GID
+		AND CertRenewDate BETWEEN '01-Jan-19' and '31-Dec-19';
+
+/* 5. (8) We need the date and full names of all boys (children) who went rafting. List by family name within date. */
+
+SELECT RDate, FName "Family Name", RFName "First Name", RLName "Last Name"
+   FROM Guests, Families, Reservations, Activities
+       WHERE Families.Guest# = Guests.Guest#
+           AND Guests.Guest# = Reservations.Guest#
+           AND Reservations.AID = Activities.AID
+           AND Relationship = 'son'
+           AND Type = 'Rafting' 
+                 Order by RDate, FName;
+
+/* 6. (4) How many rafting trips were taken this year? Label the output, Rafting Trips. */
+
+SELECT Count(Type) "Rafting Trips"
+  FROM Activities, Reservations
+    WHERE Activities.AID = Reservations.AID
+    AND Type = 'Rafting'
+	AND RDate BETWEEN '01-Jan-19' and '31-Dec-2019';
+
+/* 9. (4) What is the most number of days, the least number of days, and the average number of days our employees
+have been with the resort? Label all columns Most Days Employed, Least Days Employed and Average Days
+Employed. */
+
+SELECT MAX(DateDiff (day, HireDate, getdate())) "Most Days Employed",  MIN(DateDiff (day, HireDate, getdate())) "Least Days Employed", AVG(DateDiff (day, HireDate, getdate())) "Average Days Employed"
+  FROM Personnel;
+
+/* 11. (4) Management wants a list of first and last names of all employees and the number of months they've been with
+the company (Months Employed). List the newest employees first. */
+
+SELECT FName, LName, DateDiff(month, HireDate, getdate()) "Months Employed"
+ FROM Personnel
+ ORDER BY [Months Employed];
+
+/* 14. (3) The guests in condo A105 want to reserve an activity but lost the activities brochure that was provided in their
+condo. They remembered that Eagle was in the description, but cannot recall anything else. List the information
+for all specified activities for the guests so that they can make their plans */
+
+SELECT AID "Activity ID", Description, Hrs, PPP "Price Per Person", Distance, Type
+  FROM Activities 
+    WHERE Description LIKE '%Eagle%';
+
+/* 15. (5) One of our guests left their tablet in condo 6 on June 8th (checkout). We need to call and get the address so that
+it can be returned. Look up the full name, spouse's name, and phone number. Maybe we can catch them before
+they leave the area. */
+
+SELECT RFName "First Name", RLName "Last Name", SpouseFName "Spouse Name", Phone
+  FROM CondoStays, Guests 
+   WHERE Condostays.Guest# = Guests.Guest#  
+   AND EndDate = '08-JUN-19'
+   AND Condo# = 6;
+
+/* 16. (4) Which employees have guided reservations for more than 5 people? Include the guide's full name. */
+
+SELECT FName "Employee Who Has Guided > 5 People", LName "Last Name"
+ FROM Personnel, Guides, Reservations
+  WHERE Personnel.PID = Guides.GID
+   AND Guides.GID = Reservations.GID
+   AND NumberInParty > 5;
+
+/* 17. (11) For all activities completed in June, display the name of the activity (Activity), the guide's last name (Guide), the
+guest's last name (Guest), and the building and unit number where the guest stayed. List by activity. */
+
+SELECT Description "Activities Completed in June", LName "Guide", RLName "Guest", Bldg# "Building Number Stayed In", UnitNum, RDate
+ FROM Personnel, Guides, Activities, Reservations, Guests, Condostays, Condos
+  WHERE Personnel.PID = Guides.GID
+  AND Guides.GID = Reservations.GID
+  AND Activities.AID = Reservations.AID
+  AND Guests.Guest# = Reservations.Guest#
+  AND Guests.Guest# = Condostays.Guest#
+  AND Condos.Condo# = Condostays.Condo#
+  AND RDate LIKE '2019-06%'
+  ORDER BY Description;

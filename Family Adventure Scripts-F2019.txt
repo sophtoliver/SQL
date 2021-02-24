@@ -1,0 +1,756 @@
+/* CREATE TABLES FOR FAMILY ADVENTURE RESORTS 
+
+                 ONE TABLE AT A TIME AS IN THE LECTURES  */
+
+
+
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE PERSONNEL TABLE */
+
+create table PERSONNEL (
+   PID		char(4),
+   LName	varchar(20)	Not null,
+   FName	varchar(15)	Not null,
+   Phone	char(12)	Not null,
+   Hiredate	Date		Not null,
+   Mgr#		char(4),
+   PType        char(1)         Not null,
+   Primary Key (PID));
+   
+insert into PERSONNEL values ('AM01', 'Abrams', 'Miles', '617-555-6032', '3-Jun-12', 'GZ01', 'G');
+insert into PERSONNEL values ('BR01', 'Boyers', 'Rita', '603-555-2134', '4-Mar-12', 'KS03', 'G');
+insert into PERSONNEL values ('DH01', 'Devon', 'Harley', '781-555-7767', '8-Jan-12', 'KS03', 'G');
+insert into PERSONNEL values ('GZ01', 'Gregory', 'Zach', '603-555-8765', '4-Nov-12', 'MC01', 'G');
+insert into PERSONNEL values ('KS01', 'Kiley', 'Susan', '603-555-1230', '8-Apr-13', 'GZ01', 'G');
+insert into PERSONNEL values ('KS02', 'Kelly', 'Sam', '603-555-0003', '10-Jun-13', 'SL01', 'G');
+insert into PERSONNEL values ('MR01', 'Marston', 'Ray', '781-555-2323', '14-Sep-13', 'KS01', 'G');
+insert into PERSONNEL values ('RH01', 'Rowan', 'Hal', '207-555-9009', '2-May-14', 'SL01', 'G');
+insert into PERSONNEL values ('SL01', 'Stevens', 'Lori', '802-555-3339', '4-Jun-14', 'MC01', 'G');
+insert into PERSONNEL values ('UG01', 'Unser', 'Gayle', '203-555-8534', '1-Jul-14', 'KS01', 'G');
+insert into PERSONNEL values ('KS03', 'Kingman', 'Sonny', '303-555-4548', '6-Jul-14', 'MC01', 'G');
+insert into PERSONNEL values ('MC01', 'Mars', 'Crystal', '480-555-8997', '3-Jun-13', NULL, 'G');
+insert into PERSONNEL values ('AJ01', 'Avery', 'Janice', '603-555-8694', '10-Jan-13', 'JH01', 'H'); 
+insert into PERSONNEL values ('JH01', 'Jackson', 'Holly', '781-555-3334', '20-Nov-12', NULL, 'H'); 
+insert into PERSONNEL values ('MC02', 'Morrow', 'Abby', '207-555-7009', '30-Apr-13', 'JH01', 'H');
+insert into PERSONNEL values ('TM01', 'Travis', 'Martee', '203-555-4500', '17-Jun-13', 'MC02', 'H'); 
+insert into PERSONNEL values ('ES01', 'Elliot', 'Sarah', '303-555-8454','1-Sep-13', 'AJ01', 'H'); 
+insert into PERSONNEL values ('GB01', 'Gabriel', 'Billie', '617-555-6144', '7-May-15','MC02', 'H'); 
+insert into PERSONNEL values ('HF01', 'Henderson', 'Fran', '603-555-2896', '4-Jun-14', 'AJ01', 'H');
+insert into PERSONNEL values ('JP01', 'Jeffreys', 'Pam', '603-555-8634', '20-Jun-14', 'AJ01', 'H'); 
+
+Select * from PERSONNEL;
+
+===========================================================================================
+
+
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE PERSONNEL TABLE */
+
+create table HOUSEKEEPING (
+   HKID		     char(4),
+   AssignedCondos    smallint    Not null,
+   Primary Key (HKID, AssignedCondos));
+
+insert into HOUSEKEEPING values ('TM01', 17);
+insert into HOUSEKEEPING values ('AJ01', 5);
+insert into HOUSEKEEPING values ('ES01', 2);
+insert into HOUSEKEEPING values ('JP01', 3);
+insert into HOUSEKEEPING values ('JH01', 16);
+insert into HOUSEKEEPING values ('HF01', 1);
+insert into HOUSEKEEPING values ('GB01', 18);
+insert into HOUSEKEEPING values ('MC02', 20);
+insert into HOUSEKEEPING values ('TM01', 19);
+insert into HOUSEKEEPING values ('JH01', 21);
+insert into HOUSEKEEPING values ('JP01', 8);
+insert into HOUSEKEEPING values ('MC02', 25);
+insert into HOUSEKEEPING values ('TM01', 22);
+insert into HOUSEKEEPING values ('HF01', 6);
+insert into HOUSEKEEPING values ('AJ01', 10);
+insert into HOUSEKEEPING values ('ES01', 4);
+insert into HOUSEKEEPING values ('TM01', 24);
+insert into HOUSEKEEPING values ('MC02', 27);
+insert into HOUSEKEEPING values ('JP01', 12);
+insert into HOUSEKEEPING values ('GB01', 23);
+insert into HOUSEKEEPING values ('ES01', 7);
+insert into HOUSEKEEPING values ('JH01', 26);
+insert into HOUSEKEEPING values ('AJ01', 15);
+insert into HOUSEKEEPING values ('ES01', 9);
+insert into HOUSEKEEPING values ('HF01', 11);
+insert into HOUSEKEEPING values ('TM01', 29);
+insert into HOUSEKEEPING values ('GB01', 28);
+insert into HOUSEKEEPING values ('MC02', 30);
+insert into HOUSEKEEPING values ('ES01', 14);
+insert into HOUSEKEEPING values ('JP01', 13);
+
+Select * from HOUSEKEEPING;
+
+===========================================================================================
+
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE GUIDES TABLE */
+
+
+create table GUIDES (
+  GID		  char(4),
+  CertDate	  Date       Not null,
+  CertRenewDate   Date       Not null,
+  Primary Key (GID));
+   
+insert into GUIDES values ('AM01', '12-Aug-19', '12-Aug-21');
+insert into GUIDES values ('BR01', '6-Jun-18', '5-Jun-20');
+insert into GUIDES values ('DH01', '3-Jun-18', '4-Jun-20');
+insert into GUIDES values ('GZ01', '5-Jul-19', '5-Jul-21');
+insert into GUIDES values ('KS01', '12-Jul-17', '11-Jul-19');
+insert into GUIDES values ('KS02', '5-Aug-17', '5-Aug-19');
+insert into GUIDES values ('MR01', '27-Jun-18', '27-Jun-20');
+insert into GUIDES values ('RH01', '21-Jul-18', '20-Jul-20');
+insert into GUIDES values ('SL01', '18-Aug-17', '18-Aug-19');
+insert into GUIDES values ('UG01', '30-Jul-18', '29-Jul-20');
+insert into GUIDES values ('KS03', '12-May-18', '11-May-20');
+insert into GUIDES values ('MC01', '22-May-19', '22-May-21');
+
+Select * from GUIDES;
+
+===========================================================================================
+
+
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE CONDOS TABLE */
+
+create table CONDOS (
+   Condo#        smallint,
+   Bldg#         char(1)	 Not null,
+    UnitNum      char(3)	 Not null,
+    SqrFt        smallint	 Not null,
+    Bdrms        tinyint	 Not null,
+    Baths        tinyint	 Not null,
+    WeeklyFee   decimal(7,2)	 Not null,
+    Primary Key (Condo#));
+
+
+insert into CONDOS  values (1, 'A', '101', 1030, 2, 1, 775.00);
+insert into CONDOS  values (2, 'A', '102', 1164, 2, 2, 845.00);
+insert into CONDOS  values (3, 'A', '103', 845, 1, 1, 650.00);
+insert into CONDOS  values (4, 'A', '104', 1164, 2, 2, 845.00);
+insert into CONDOS  values (5, 'A', '105', 1575, 3, 2, 965.00);
+insert into CONDOS  values (6, 'A', '201', 1030, 2, 1, 775.00);
+insert into CONDOS  values (7, 'A', '202', 1164, 2, 2, 845.00);
+insert into CONDOS  values (8, 'A', '203', 845, 1, 1, 650.00);
+insert into CONDOS  values (9, 'A', '204', 1164, 2, 2, 845.00);
+insert into CONDOS  values (10, 'A', '205', 1575, 3, 2, 965.00);
+insert into CONDOS  values (11, 'A', '301', 1030, 2, 1, 775.00);
+insert into CONDOS  values (12, 'A', '302', 1164, 2, 2, 845.00);
+insert into CONDOS  values (13, 'A', '303', 845, 1, 1, 650.00);
+insert into CONDOS  values (14, 'A', '304', 1164, 2, 2, 845.00);
+insert into CONDOS  values (15, 'A', '305', 1575, 3, 2, 965.00);
+insert into CONDOS  values (16, 'C', '101', 1030, 2, 1, 775.00);
+insert into CONDOS  values (17, 'C', '102', 1164, 2, 2, 845.00);
+insert into CONDOS  values (18, 'C', '103', 845, 1, 1, 650.00);
+insert into CONDOS  values (19, 'C', '104', 1164, 2, 2, 845.00);
+insert into CONDOS  values (20, 'C', '105', 1575, 3, 2, 965.00);
+insert into CONDOS  values (21, 'C', '201', 1030, 2, 1, 775.00);
+insert into CONDOS  values (22, 'C', '202', 1164, 2, 2, 845.00);
+insert into CONDOS  values (23, 'C', '203', 845, 1, 1, 650.00);
+insert into CONDOS  values (24, 'C', '204', 1164, 2, 2, 845.00);
+insert into CONDOS  values (25, 'C', '205', 1575, 3, 2, 965.00);
+insert into CONDOS  values (26, 'C', '301', 1030, 2, 1, 775.00);
+insert into CONDOS  values (27, 'C', '302', 1164, 2, 2, 845.00);
+insert into CONDOS  values (28, 'C', '303', 845, 1, 1, 650.00);
+insert into CONDOS  values (29, 'C', '304', 1164, 2, 2, 845.00);
+insert into CONDOS  values (30, 'C', '305', 1575, 3, 2, 965.00);
+
+Select * from CONDOS;
+
+===========================================================================================
+
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE CLEANING TABLE */
+
+
+create table CLEANING (
+  Condo#          smallint,
+  DateCleaned     Date,
+   HKID           char(4)    NOT NULL,
+  Primary Key (Condo#, DateCleaned));    
+
+insert into CLEANING values (10, '1-Jun-19', 'AJ01');
+insert into CLEANING values (26, '6-Jul-19', 'JH01');
+insert into CLEANING values (30, '1-Jun-19', 'MC02');
+insert into CLEANING values (19, '8-Jun-19', 'AJ01');
+insert into CLEANING values (2, '22-Jun-19', 'ES01');
+insert into CLEANING values (23, '6-Jul-19', 'GB01');
+insert into CLEANING values (1, '25-May-19', 'HF01');
+insert into CLEANING values (3, '15-Jun-19', 'JP01');
+insert into CLEANING values (5, '15-Jun-19', 'AJ01');
+insert into CLEANING values (16, '8-Jun-19', 'JH01');
+insert into CLEANING values (25, '25-May-19', 'MC02');
+insert into CLEANING values (29, '29-Jun-19', 'JH01');
+insert into CLEANING values (7, '6-Jul-19', 'ES01');
+insert into CLEANING values (18, '22-Jun-19', 'GB01');
+insert into CLEANING values (11, '15-Jun-19', 'HF01');
+insert into CLEANING values (8, '25-May-19', 'JP01');
+insert into CLEANING values (5, '29-Jun-19', 'AJ01');
+insert into CLEANING values (21, '10-Aug-19', 'JH01');
+insert into CLEANING values (20, '29-Jun-19', 'MC02');
+insert into CLEANING values (17, '29-Jun-19', 'TM01');
+insert into CLEANING values (4, '13-Jul-19', 'ES01');
+insert into CLEANING values (23, '13-Jul-19', 'GB01');
+insert into CLEANING values (6, '8-Jun-19', 'HF01');
+insert into CLEANING values (12, '6-Jul-19', 'JP01');
+insert into CLEANING values (5, '13-Jul-19', 'AJ01');
+insert into CLEANING values (26, '29-Jun-19', 'JH01');
+insert into CLEANING values (27, '8-Jun-19', 'MC02');
+insert into CLEANING values (24, '22-Jun-19', 'HF01');
+insert into CLEANING values (4, '27-Jul-19', 'ES01');
+insert into CLEANING values (28, '20-Jul-19', 'GB01');
+insert into CLEANING values (6, '20-Jul-19', 'HF01');
+insert into CLEANING values (8, '20-Jul-19', 'JP01');
+insert into CLEANING values (10, '6-Jul-19', 'AJ01');
+insert into CLEANING values (16, '17-Aug-19', 'JH01');
+insert into CLEANING values (25, '13-Jul-19', 'MC02');
+insert into CLEANING values (22, '6-Jul-19', 'TM01');
+insert into CLEANING values (14, '25-May-19', 'ES01');
+insert into CLEANING values (18, '27-Jul-19', 'GB01');
+insert into CLEANING values (1, '6-Jul-19', 'HF01');
+insert into CLEANING values (8, '22-Jun-19', 'JP01');
+insert into CLEANING values (15, '15-Jun-19', 'AJ01');
+insert into CLEANING values (21, '31-Aug-19', 'JH01');
+insert into CLEANING values (20, '27-Jul-19', 'MC02');
+insert into CLEANING values (22, '20-Jul-19', 'TM01');
+insert into CLEANING values (4, '6-Jul-19', 'ES01');
+insert into CLEANING values (18, '6-Jul-19', 'GB01');
+insert into CLEANING values (1, '3-Aug-19', 'HF01');
+insert into CLEANING values (8, '13-Jul-19', 'JP01');
+insert into CLEANING values (10, '13-Jul-19', 'AJ01');
+insert into CLEANING values (30, '25-May-19', 'MC02');
+insert into CLEANING values (17, '6-Jul-19', 'TM01');
+insert into CLEANING values (2, '13-Jul-19', 'ES01');
+insert into CLEANING values (23, '25-May-19', 'GB01');
+insert into CLEANING values (6, '10-Aug-19', 'HF01');
+insert into CLEANING values (12, '22-Jun-19', 'JP01');
+insert into CLEANING values (10, '10-Aug-19', 'AJ01');
+insert into CLEANING values (27, '13-Jul-19', 'MC02');
+insert into CLEANING values (24, '27-Jul-19', 'TM01');
+insert into CLEANING values (7, '25-May-19', 'ES01');
+insert into CLEANING values (18, '10-Aug-19', 'GB01');
+insert into CLEANING values (12, '3-Aug-19', 'JP01');
+insert into CLEANING values (25, '3-Aug-19', 'MC02');
+insert into CLEANING values (20, '17-Aug-19', 'MC02');
+insert into CLEANING values (22, '10-Aug-19', 'TM01');
+insert into CLEANING values (2, '10-Aug-19', 'ES01');
+insert into CLEANING values (23, '3-Aug-19', 'GB01');
+insert into CLEANING values (3, '22-Jun-19', 'JP01');
+insert into CLEANING values (30, '6-Jul-19', 'MC02');
+insert into CLEANING values (3, '17-Aug-19', 'JP01');
+insert into CLEANING values (7, '3-Aug-19', 'ES01');
+insert into CLEANING values (30, '10-Aug-19', 'MC02');
+insert into CLEANING values (4, '24-Aug-19', 'ES01');
+insert into CLEANING values (8, '17-Aug-19', 'JP01');
+insert into CLEANING values (12, '24-Aug-19', 'JP01');
+insert into CLEANING values (25, '17-Aug-19', 'MC02');
+insert into CLEANING values (22, '31-Aug-19', 'TM01');
+insert into CLEANING values (4, '31-Aug-19', 'ES01');
+insert into CLEANING values (18, '31-Aug-19', 'GB01');
+insert into CLEANING values (7, '17-Aug-19', 'ES01');
+insert into CLEANING values (8, '24-Aug-19', 'JP01');
+insert into CLEANING values (25, '31-Aug-19', 'MC02');
+insert into CLEANING values (24, '31-Aug-19', 'TM01');
+insert into CLEANING values (2, '3-Aug-19', 'ES01');
+insert into CLEANING values (20, '24-Aug-19', 'MC02');
+insert into CLEANING values (27, '17-Aug-19', 'MC02');
+
+Select * from CLEANING;
+
+
+
+===========================================================================================
+
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE GUESTS TABLE */
+
+
+create table GUESTS (
+   Guest#	varchar(4),
+   RLName	varchar(20)	Not null,
+   RFName	varchar(15)	Not null,
+   City		varchar(20)	Not null,
+   State	char(2)		Not null,
+   Phone	char(12)	Not null,
+   SpouseFName	varchar(15)	Not null,
+   Primary Key (Guest#));
+
+insert into GUESTS values ('G1', 'Northwood', 'Liam', 'Springfield', 'MA', '413-555-3212', 'Stephanie');
+insert into GUESTS values ('G2', 'Ocean', 'Kyle', 'Athens', 'GA', '404-555-9123', 'Alice');
+insert into GUESTS values ('G3', 'Kastoff', 'Sandra', 'Ocean City', 'NJ', '609-555-7677', 'John');
+insert into GUESTS values ('G4', 'Geoff', 'Bess', 'York', 'NY', '585-555-3333', 'Pete');
+insert into GUESTS values ('G5', 'McLean', 'Adam', 'Rome', 'ME', '207-555-5663', 'Judy');
+insert into GUESTS values ('G6', 'Montana', 'Ben', 'Denver', 'CO', '303-555-1123', 'Carrie');
+insert into GUESTS values ('G7', 'Marchand', 'June', 'Fairfield', 'CT', '860-555-4464', 'Sam');
+insert into GUESTS values ('G8', 'Rufalo', 'Sadie', 'Sommerville', 'MA', '617-555-2233', 'Tom');
+insert into GUESTS values ('G9', 'Caron', 'Karen', 'Portland', 'OR', '541-555-3778', 'Brick');
+insert into GUESTS values ('G10', 'Benson', 'Paul', 'Vernon', 'CT', '203-555-5542', 'Bella');
+insert into GUESTS values ('G11', 'Jones', 'Steve', 'Flagstaff', 'AZ', '520-555-9890', 'Diane');
+insert into GUESTS values ('G12', 'Vincent', 'Martha', 'San Jose', 'CA', '626-555-0907', 'Chandler');
+insert into GUESTS values ('G13', 'Mura', 'Laura', 'Henderson', 'NV', '702-555-2265', 'George');
+insert into GUESTS values ('G14', 'Chapman', 'Jack', 'Edinboro', 'PA', '814-555-0990', 'Sarah');
+insert into GUESTS values ('G15', 'Gernowski', 'Mike', 'Bethesda', 'MD', '301-555-3356', 'Janet');
+insert into GUESTS values ('G16', 'Borak', 'Iris', 'Manchester', 'NH', '603-555-7777', 'Eddie');
+insert into GUESTS values ('G17', 'Henderson', 'Ryan', 'Helena', 'MT', '406-555-0020', 'Elliot');
+insert into GUESTS values ('G18', 'Barnett', 'Curtis', 'Edmonton', 'AB', '403-555-2232', 'Mary Ann');
+insert into GUESTS values ('G19', 'Tulsa', 'Tony', 'Salt Lake City', 'UT', '801-555-8897', 'Evelyn');
+insert into GUESTS values ('G20', 'Peterson', 'Brooke', 'Yuma', 'AZ', '928-555-4334', 'Greg');
+insert into GUESTS values ('G21', 'Jeffreys', 'Tim', 'Glendale', 'CA', '909-555-1136', 'Suzanne');
+insert into GUESTS values ('G22', 'Brown', 'Phil', 'Grand Junction', 'CO', '720-555-3003', 'Ann');
+insert into GUESTS values ('G23', 'Thomas', 'Sue', 'Boise', 'ID', '208-555-8073', 'Bob');
+
+Select * from GUESTS;
+
+===========================================================================================
+
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE CONDOSTAYS TABLE */
+
+
+create table CONDOSTAYS (
+   Condo# 	smallint,
+   Guest#	varchar(4)	Not null,
+   StartDate	Date		Not null,
+   EndDate	Date		Not null,
+   Primary key (Condo#, Guest#, StartDate),
+   Foreign Key (Condo#) REFERENCES CONDOS (Condo#),
+   Foreign Key (Guest#) REFERENCES GUESTS (Guest#));
+
+insert into CONDOSTAYS values (1, 'G1', '18-May-19', '25-May-19');
+insert into CONDOSTAYS values (3, 'G3', '8-Jun-19', '15-Jun-19');
+insert into CONDOSTAYS values (2, 'G9', '15-Jun-19', '22-Jun-19');
+insert into CONDOSTAYS values (7, 'G4', '29-Jun-19', '6-Jul-19');
+insert into CONDOSTAYS values (4, 'G21','6-Jul-19', '13-Jul-19');
+insert into CONDOSTAYS values (8, 'G6', '18-May-19', '25-May-19');
+insert into CONDOSTAYS values (12, 'G1','29-Jun-19', '6-Jul-19');
+insert into CONDOSTAYS values (30, 'G7', '25-May-19', '1-Jun-19');
+insert into CONDOSTAYS values (25, 'G18', '18-May-19', '25-May-19');
+insert into CONDOSTAYS values (10, 'G2', '25-May-19', '1-Jun-19');
+insert into CONDOSTAYS values (8, 'G3', '15-Jun-19', '22-Jun-19');
+insert into CONDOSTAYS values (5, 'G11', '8-Jun-19', '15-Jun-19');
+insert into CONDOSTAYS values (20, 'G12', '22-Jun-19', '29-Jun-19');
+insert into CONDOSTAYS values (14, 'G19', '18-May-19', '25-May-19');
+insert into CONDOSTAYS values (5, 'G14', '22-Jun-19', '29-Jun-19');
+insert into CONDOSTAYS values (8, 'G6', '6-Jul-19', '13-Jul-19');
+insert into CONDOSTAYS values (19, 'G17', '1-Jun-19', '8-Jun-19');
+insert into CONDOSTAYS values (23, 'G16', '29-Jun-19', '6-Jul-19');
+insert into CONDOSTAYS values (27, 'G20', '1-Jun-19', '8-Jun-19');
+insert into CONDOSTAYS values (11, 'G22', '8-Jun-19', '15-Jun-19');
+insert into CONDOSTAYS values (12, 'G4', '15-Jun-19', '22-Jun-19');
+insert into CONDOSTAYS values (5, 'G11', '6-Jul-19', '13-Jul-19');
+insert into CONDOSTAYS values (29, 'G15', '22-Jun-19', '29-Jun-19');
+insert into CONDOSTAYS values (6, 'G9', '1-Jun-19', '8-Jun-19');
+insert into CONDOSTAYS values (10, 'G2', '29-Jun-19', '6-Jul-19');
+insert into CONDOSTAYS values (25, 'G23', '6-Jul-19', '13-Jul-19');
+insert into CONDOSTAYS values (15, 'G14', '8-Jun-19', '15-Jun-19');
+insert into CONDOSTAYS values (18, 'G10', '15-Jun-19', '22-Jun-19');
+insert into CONDOSTAYS values (23, 'G16', '6-Jul-19', '13-Jul-19');
+insert into CONDOSTAYS values (17, 'G8', '22-Jun-19', '29-Jun-19');
+insert into CONDOSTAYS values (20, 'G12', '20-Jul-19', '27-Jul-19');
+insert into CONDOSTAYS values (26, 'G3', '29-Jun-19', '6-Jul-19');
+insert into CONDOSTAYS values (30, 'G18', '18-May-19', '25-May-19');
+insert into CONDOSTAYS values (28, 'G17', '13-Jul-19', '20-Jul-19');
+insert into CONDOSTAYS values (4, 'G15', '29-Jun-19', '6-Jul-19');
+insert into CONDOSTAYS values (27, 'G21', '6-Jul-19', '13-Jul-19');
+insert into CONDOSTAYS values (18, 'G16', '20-Jul-19', '27-Jul-19');
+insert into CONDOSTAYS values (2, 'G13', '6-Jul-19', '13-Jul-19');
+insert into CONDOSTAYS values (8, 'G6', '13-Jul-19', '20-Jul-19');
+insert into CONDOSTAYS values (6, 'G9', '13-Jul-19', '20-Jul-19');
+insert into CONDOSTAYS values (24, 'G10', '15-Jun-19', '22-Jun-19');
+insert into CONDOSTAYS values (7, 'G9', '18-May-19', '25-May-19');
+insert into CONDOSTAYS values (25, 'G23', '27-Jul-19', '3-Aug-19');
+insert into CONDOSTAYS values (22, 'G22', '29-Jun-19', '6-Jul-19');
+insert into CONDOSTAYS values (16, 'G17', '1-Jun-19', '8-Jun-19'); 
+insert into CONDOSTAYS values (22, 'G13', '13-Jul-19', '20-Jul-19');
+insert into CONDOSTAYS values (18, 'G22', '29-Jun-19', '6-Jul-19');
+insert into CONDOSTAYS values (20, 'G12', '10-Aug-19', '17-Aug-19');
+insert into CONDOSTAYS values (21, 'G21', '3-Aug-19', '10-Aug-19');
+insert into CONDOSTAYS values (23, 'G17', '18-May-19', '25-May-19'); 
+insert into CONDOSTAYS values (17, 'G8', '29-Jun-19', '6-Jul-19');
+insert into CONDOSTAYS values (24, 'G10', '20-Jul-19', '27-Jul-19');
+insert into CONDOSTAYS values (26, 'G3', '22-Jun-19', '29-Jun-19');
+insert into CONDOSTAYS values (12, 'G1', '27-Jul-19', '3-Aug-19');
+insert into CONDOSTAYS values (10, 'G19', '6-Jul-19', '13-Jul-19');
+insert into CONDOSTAYS values (30, 'G18', '29-Jun-19', '6-Jul-19');
+insert into CONDOSTAYS values (1, 'G4', '29-Jun-19', '6-Jul-19');
+insert into CONDOSTAYS values (4, 'G1', '20-Jul-19', '27-Jul-19');
+insert into CONDOSTAYS values (3, 'G10', '15-Jun-19', '22-Jun-19');
+insert into CONDOSTAYS values (1, 'G8', '27-Jul-19', '3-Aug-19');
+insert into CONDOSTAYS values (3, 'G10', '10-Aug-19', '17-Aug-19');
+insert into CONDOSTAYS values (2, 'G15', '3-Aug-19', '10-Aug-19');
+insert into CONDOSTAYS values (7, 'G13', '27-Jul-19', '3-Aug-19');
+insert into CONDOSTAYS values (4, 'G8', '17-Aug-19', '24-Aug-19');
+insert into CONDOSTAYS values (8, 'G6', '10-Aug-19', '17-Aug-19');
+insert into CONDOSTAYS values (12, 'G4', '17-Aug-19', '24-Aug-19');
+insert into CONDOSTAYS values (30, 'G18', '3-Aug-19', '10-Aug-19');
+insert into CONDOSTAYS values (25, 'G23', '10-Aug-19', '17-Aug-19');
+insert into CONDOSTAYS values (10, 'G5', '3-Aug-19', '10-Aug-19');
+insert into CONDOSTAYS values (25, 'G23', '24-Aug-19', '31-Aug-19');
+insert into CONDOSTAYS values (22, 'G22', '3-Aug-19', '10-Aug-19');
+insert into CONDOSTAYS values (16, 'G17', '10-Aug-19', '17-Aug-19');
+insert into CONDOSTAYS values (22, 'G20', '24-Aug-19', '31-Aug-19');
+insert into CONDOSTAYS values (18, 'G16', '3-Aug-19', '10-Aug-19');
+insert into CONDOSTAYS values (20, 'G14', '17-Aug-19', '24-Aug-19');
+insert into CONDOSTAYS values (21, 'G19', '24-Aug-19', '31-Aug-19');
+insert into CONDOSTAYS values (23, 'G16', '27-Jul-19', '3-Aug-19');
+insert into CONDOSTAYS values (4, 'G8', '24-Aug-19', '31-Aug-19');
+insert into CONDOSTAYS values (27, 'G20', '10-Aug-19', '17-Aug-19');
+insert into CONDOSTAYS values (18, 'G22', '24-Aug-19', '31-Aug-19');
+insert into CONDOSTAYS values (2, 'G21', '27-Jul-19', '3-Aug-19');
+insert into CONDOSTAYS values (8, 'G10', '17-Aug-19', '24-Aug-19');
+insert into CONDOSTAYS values (6, 'G9', '3-Aug-19', '10-Aug-19');
+insert into CONDOSTAYS values (24, 'G10', '24-Aug-19', '31-Aug-19');
+insert into CONDOSTAYS values (7, 'G13', '10-Aug-19', '17-Aug-19');
+
+select * from CONDOSTAYS;
+
+============================================================================================
+
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE FAMILIES TABLE */
+
+
+create table FAMILIES (
+  Guest#	varchar(4)	Not null,
+  FName		varchar(15)	Not null,
+  Relationship	varchar(10)	Not null,
+  Birthdate	Date		Not null,          
+  Primary key (Guest#, Fname),
+  Foreign Key (Guest#) REFERENCES GUESTS (Guest#));
+
+insert into FAMILIES values ('G1', 'Loni', 'daughter', '15-Aug-12');
+insert into FAMILIES values ('G1', 'Lisa', 'daughter', '10-Jul-10');
+insert into FAMILIES values ('G2', 'Tony', 'son', '2-Feb-11');
+insert into FAMILIES values ('G2', 'Mia', 'daughter', '8-May-09');
+insert into FAMILIES values ('G2', 'Billy', 'son', '30-Jan-07');
+insert into FAMILIES values ('G3', 'Abby', 'daughter', '3-May-08');
+insert into FAMILIES values ('G4', 'Tim', 'son', '10-Nov-10');
+insert into FAMILIES values ('G4', 'Jarod', 'son', '10-Nov-10');
+insert into FAMILIES values ('G5', 'Julie', 'daughter', '9-Jul-04');
+insert into FAMILIES values ('G5', 'Helen', 'daughter', '14-Jun-06');
+insert into FAMILIES values ('G5', 'Casey', 'son', '5-Dec-11');
+insert into FAMILIES values ('G6', 'Jim', 'son', '17-Mar-05');
+insert into FAMILIES values ('G7', 'Jenny', 'daughter', '7-Aug-03');
+insert into FAMILIES values ('G7', 'Zoe', 'daughter', '18-Sep-05');
+insert into FAMILIES values ('G7', 'Brittany', 'daughter', '18-Sep-05');
+insert into FAMILIES values ('G7', 'Dan', 'son', '9-Mar-08');
+insert into FAMILIES values ('G8', 'Frankie', 'son', '10-Jan-08');
+insert into FAMILIES values ('G8', 'Hailey', 'daughter', '25-Apr-06');
+insert into FAMILIES values ('G9', 'Harry', 'son', '30-Jul-11');
+insert into FAMILIES values ('G9', 'Randy', 'son', '27-Mar-09');
+insert into FAMILIES values ('G10', 'Kenny', 'son', '24-Nov-04');
+insert into FAMILIES values ('G11', 'Lucy', 'daughter', '11-Nov-05');
+insert into FAMILIES values ('G11', 'Louie', 'son', '31-Oct-07');
+insert into FAMILIES values ('G11', 'Matt', 'son', '23-Aug-10');
+insert into FAMILIES values ('G12', 'Nora', 'daughter', '16-Oct-02');
+insert into FAMILIES values ('G12', 'Amy', 'daughter', '19-Apr-04');
+insert into FAMILIES values ('G12', 'Logan', 'son', '7-Jun-06');
+insert into FAMILIES values ('G12', 'Noah', 'son', '4-Oct-08');
+insert into FAMILIES values ('G12', 'Carter', 'son', '2-Feb-02');
+insert into FAMILIES values ('G13', 'Tammy', 'daughter', '14-Sep-05');
+insert into FAMILIES values ('G13', 'Randi', 'daughter', '10-Mar-07');
+insert into FAMILIES values ('G14', 'Tyler', 'son', '2-Aug-02');
+insert into FAMILIES values ('G14', 'Dani', 'daughter', '14-Jun-05');
+insert into FAMILIES values ('G14', 'Miles', 'son', '21-Apr-06');
+insert into FAMILIES values ('G15', 'Brody', 'son', '18-Feb-08');
+insert into FAMILIES values ('G15', 'Ian', 'son', '7-Oct-06');
+insert into FAMILIES values ('G16', 'Emily', 'daughter', '24-Dec-02');
+insert into FAMILIES values ('G17', 'Riley', 'daughter', '3-Nov-05');
+insert into FAMILIES values ('G18', 'Nate', 'son', '16-May-07');
+insert into FAMILIES values ('G18', 'Cooper', 'son', '14-Aug-05');
+insert into FAMILIES values ('G18', 'Chloe', 'daughter', '1-Feb-03');
+insert into FAMILIES values ('G18','Zach', 'son', '26-May-02');
+insert into FAMILIES values ('G19', 'Lori', 'daughter', '19-Jul-03');
+insert into FAMILIES values ('G19', 'Joe', 'son', '11-Jan-06');
+insert into FAMILIES values ('G19', 'David', 'son', '30-Mar-09');
+insert into FAMILIES values ('G20', 'Madison', 'daughter', '19-Apr-05');
+insert into FAMILIES values ('G20', 'Judy', 'daughter', '9-Jul-08');
+insert into FAMILIES values ('G20', 'Max', 'son', '26-Jun-10');
+insert into FAMILIES values ('G21', 'Sara', 'daughter', '3-May-02');
+insert into FAMILIES values ('G21', 'Grayson', 'son', '25-Jan-04');
+insert into FAMILIES values ('G22', 'Andy', 'son', '22-Feb-11');
+insert into FAMILIES values ('G23', 'Avery', 'daughter', '15-Jul-04');
+insert into FAMILIES values ('G23', 'Vicky', 'daughter', '22-May-05');
+insert into FAMILIES values ('G23', 'Mackenzie', 'daughter', '3-Aug-08');
+insert into FAMILIES values ('G23', 'Jake', 'son', '15-Sep-11');
+
+select * from FAMILIES;
+
+===========================================================================================
+
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE INVOICE TABLE */
+
+create table INVOICE (
+ INV#        char(5),
+ Condo#      smallint     NOT NULL,
+ Guest#      varchar(4)   NOT NULL,
+ Primary key (INV#),
+ Foreign Key (Condo#) REFERENCES CONDOS (Condo#),
+ Foreign Key (Guest#) REFERENCES GUESTS (Guest#));
+
+insert into INVOICE values ('00001', 1, 'G1');
+insert into INVOICE values ('00002', 8, 'G6');
+insert into INVOICE values ('00003', 25, 'G18');
+insert into INVOICE values ('00004', 14, 'G19');
+insert into INVOICE values ('00005', 30, 'G18');
+insert into INVOICE values ('00006', 7, 'G9');
+insert into INVOICE values ('00007', 23, 'G17');
+insert into INVOICE values ('00008', 30, 'G7');
+insert into INVOICE values ('00009', 10, 'G2');
+insert into INVOICE values ('00010', 19, 'G17');
+insert into INVOICE values ('00011', 27, 'G20');
+insert into INVOICE values ('00012', 6, 'G9');
+insert into INVOICE values ('00013', 16, 'G17');
+insert into INVOICE values ('00014', 3, 'G3');
+insert into INVOICE values ('00015', 5, 'G11');
+insert into INVOICE values ('00016', 11, 'G22');
+insert into INVOICE values ('00017', 15, 'G14');
+insert into INVOICE values ('00018', 2, 'G9');
+insert into INVOICE values ('00019', 8, 'G3');
+insert into INVOICE values ('00020', 12, 'G4');
+insert into INVOICE values ('00021', 18, 'G10');
+insert into INVOICE values ('00022', 24, 'G10');
+insert into INVOICE values ('00023', 3, 'G10');
+insert into INVOICE values ('00024', 20, 'G12');
+insert into INVOICE values ('00025', 5, 'G14');
+insert into INVOICE values ('00026', 29, 'G15');
+insert into INVOICE values ('00027', 17, 'G8');
+insert into INVOICE values ('00028', 26, 'G3');
+insert into INVOICE values ('00029', 7, 'G4');
+insert into INVOICE values ('00030', 12, 'G1');
+insert into INVOICE values ('00031', 23, 'G16');
+insert into INVOICE values ('00032', 10, 'G2');
+insert into INVOICE values ('00033', 26, 'G3');
+insert into INVOICE values ('00034', 4, 'G15');
+insert into INVOICE values ('00035', 22, 'G22');
+insert into INVOICE values ('00036', 18, 'G22');
+insert into INVOICE values ('00037', 17, 'G8');
+insert into INVOICE values ('00038', 30, 'G18');
+insert into INVOICE values ('00039', 1, 'G4');
+insert into INVOICE values ('00040', 4, 'G21');
+insert into INVOICE values ('00041', 8, 'G6');
+insert into INVOICE values ('00042', 5, 'G11');
+insert into INVOICE values ('00043', 25, 'G23');
+insert into INVOICE values ('00044', 23, 'G16');
+insert into INVOICE values ('00045', 27, 'G21');
+insert into INVOICE values ('00046', 2, 'G13');
+insert into INVOICE values ('00047', 10, 'G19');
+insert into INVOICE values ('00048', 28, 'G17');
+insert into INVOICE values ('00049', 8, 'G6');
+insert into INVOICE values ('00050', 6, 'G9');
+insert into INVOICE values ('00051', 22, 'G13');
+insert into INVOICE values ('00052', 20, 'G12');
+insert into INVOICE values ('00053', 18, 'G16');
+insert into INVOICE values ('00054', 24, 'G10');
+insert into INVOICE values ('00055', 4, 'G1');
+insert into INVOICE values ('00056', 25, 'G23');
+insert into INVOICE values ('00057', 12, 'G1');
+insert into INVOICE values ('00058', 1, 'G8');
+insert into INVOICE values ('00059', 7, 'G13');
+insert into INVOICE values ('00060', 23, 'G16');
+insert into INVOICE values ('00061', 2, 'G21');
+insert into INVOICE values ('00062', 21, 'G21');
+insert into INVOICE values ('00063', 2, 'G15');
+insert into INVOICE values ('00064', 30, 'G18');
+insert into INVOICE values ('00065', 10, 'G5');
+insert into INVOICE values ('00066', 22, 'G22');
+insert into INVOICE values ('00067', 18, 'G16');
+insert into INVOICE values ('00068', 6, 'G9');
+insert into INVOICE values ('00069', 20, 'G12');
+insert into INVOICE values ('00070', 3, 'G10');
+insert into INVOICE values ('00071', 8, 'G6');
+insert into INVOICE values ('00072', 25, 'G23');
+insert into INVOICE values ('00073', 16, 'G17');
+insert into INVOICE values ('00074', 27, 'G20');
+insert into INVOICE values ('00075', 7, 'G13');
+insert into INVOICE values ('00076', 4, 'G8');
+insert into INVOICE values ('00077', 12, 'G4');
+insert into INVOICE values ('00078', 20, 'G14');
+insert into INVOICE values ('00079', 8, 'G10');
+insert into INVOICE values ('00080', 25, 'G23');
+insert into INVOICE values ('00081', 22, 'G20');
+insert into INVOICE values ('00082', 21, 'G19');
+insert into INVOICE values ('00083', 4, 'G8');
+insert into INVOICE values ('00084', 18, 'G22');
+insert into INVOICE values ('00085', 24, 'G10');
+
+Select * from INVOICE;
+
+===========================================================================================
+
+
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE ACTIVITIES TABLE */
+
+
+create table ACTIVITIES (
+   AID		varchar(3),
+   Description	varchar(30)	Not null,
+    Hrs		tinyint	 	Not null,
+    PPP		decimal(4,2)	Not null,
+    Distance	tinyint	 	Not null,
+    Type	varchar(15) 	Not null,
+    Primary Key (AID));
+
+insert into ACTIVITIES values ('H1', 'Eagle Falls', 4, 15.00, 5, 'Hike');
+insert into ACTIVITIES values ('H2', 'Vail Mountain', 2, 10.00, 3, 'Hike');
+insert into ACTIVITIES values ('H3', 'Spruce Saddle Loop', 1, 5.00, 2, 'Hike');
+insert into ACTIVITIES values ('H4', 'Nottingham Park', 1, 5.00, 1, 'Hike');
+insert into ACTIVITIES values ('H5', 'Cordillera', 3, 10.00, 4, 'Hike');
+insert into ACTIVITIES values ('B1', 'Beaver Creek Mountain', 3, 15.00, 6, 'Bike');
+insert into ACTIVITIES values ('B2', 'Avon', 3, 15.00, 10, 'Bike');
+insert into ACTIVITIES values ('B3', 'White River National Park', 4, 20.00, 12, 'Bike');
+insert into ACTIVITIES values ('B4', 'Vail Village', 2, 10.00, 8, 'Bike');
+insert into ACTIVITIES values ('B5', 'Eagle Valley', 2, 10.00, 9, 'Bike');
+insert into ACTIVITIES values ('R1', 'Upper Colorado River', 4, 25.00, 15, 'Rafting');
+insert into ACTIVITIES values ('R2', 'Rancho Del Rio', 3, 10.00, 8, 'Rafting');
+insert into ACTIVITIES values ('R3', 'White River', 4, 25.00, 12, 'Rafting');
+insert into ACTIVITIES values ('R4', 'Beaver Creek', 4, 25.00, 16, 'Rafting');
+insert into ACTIVITIES values ('R5', 'Eagle River', 4, 25.00, 20, 'Rafting');
+insert into ACTIVITIES values ('R6', 'Upper Gore Creek', 4, 25.00, 12, 'Rafting');
+insert into ACTIVITIES values ('R7', 'Arkansas River', 6, 30.00, 30, 'Rafting');
+insert into ACTIVITIES values ('HB1', '4 Eagle Ranch', 4, 30.00, 10, 'HorseBack');
+insert into ACTIVITIES values ('HB2', 'Black Mountain Ranch', 4, 30.00, 12, 'HorseBack');
+insert into ACTIVITIES values ('HB3', 'Triple G Ranch', 3, 20.00, 6, 'HorseBack');
+insert into ACTIVITIES values ('H6', 'Bradbury - North Peak', 4, 15.00, 8, 'Hike');
+insert into ACTIVITIES values ('B6', 'Bradbury - West Peak', 4, 15.00, 5, 'Bike');
+insert into ACTIVITIES values ('HB4', 'Cadillac Mountain', 2, 10.00, 4, 'HorseBack');
+insert into ACTIVITIES values ('B7', 'Adams Park Loop', 2, 5.00, 1, 'Bike');
+insert into ACTIVITIES values ('R8', 'Lower Gore Creek', 4, 25.00, 15, 'Rafting');
+insert into ACTIVITIES values ('B8', 'Welch Trail Ride', 4, 25.00, 15, 'Bike');
+insert into ACTIVITIES values ('HB5', 'Westfield River Loop', 6, 30.00, 20, 'HorseBack');
+insert into ACTIVITIES values ('H7', 'McLennan Reserve', 2, 10.00, 6, 'Hike');
+insert into ACTIVITIES values ('B9', 'Masons Farm', 3, 15.00, 12, 'Bike');
+insert into ACTIVITIES values ('H8', 'Whitefield', 2, 15.00, 6, 'Hike');
+
+select * from ACTIVITIES;
+
+===========================================================================================
+
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE RESERVATIONS TABLE */
+
+
+create table RESERVATIONS (
+   RID		  char(5),
+   Guest#	  varchar(4)	Not null,
+   AID		  varchar(3)	Not null,
+   GID		  char(4)	Not null,
+   RDate	  Date		Not null,   
+   NumberInParty  tinyint	Not null,
+   Primary Key (RID),
+   Foreign Key (Guest#) REFERENCES GUESTS (Guest#),
+   Foreign Key (AID) REFERENCES ACTIVITIES (AID),
+   Foreign Key (GID) REFERENCES GUIDES (GID));
+
+insert into RESERVATIONS values ('14001', 'G1', 'H1', 'AM01', '21-May-19', 4);
+insert into RESERVATIONS values ('14002', 'G1', 'R2', 'MC01', '25-Jul-19', 4);
+insert into RESERVATIONS values ('14003', 'G2', 'B3', 'RH01', '28-May-19', 5);
+insert into RESERVATIONS values ('14004', 'G2', 'R8', 'BR01', '2-Jul-19', 5);
+insert into RESERVATIONS values ('14005', 'G4', 'R8', 'BR01', '2-Jul-19', 4);
+insert into RESERVATIONS values ('14006', 'G5', 'HB2', 'MR01', '8-Aug-19', 5);
+insert into RESERVATIONS values ('14007', 'G6', 'B9', 'UG01', '11-Jul-19', 3);
+insert into RESERVATIONS values ('14008', 'G6', 'R5', 'DH01', '13-Aug-19', 3);
+insert into RESERVATIONS values ('14009', 'G7', 'H3', 'DH01', '27-May-19', 6);
+insert into RESERVATIONS values ('14010', 'G21', 'H7', 'RH01', '11-Jul-19', 4);
+insert into RESERVATIONS values ('14011', 'G18', 'HB5', 'KS02', '19-May-19', 6);
+insert into RESERVATIONS values ('14012', 'G11', 'H3', 'DH01', '10-Jun-19', 5);
+insert into RESERVATIONS values ('14013', 'G19', 'H1', 'AM01', '21-May-19', 5);
+insert into RESERVATIONS values ('14014', 'G14', 'R1', 'KS03', '25-Jun-19', 5);
+insert into RESERVATIONS values ('14015', 'G17', 'HB5', 'KS02', '14-Jul-19', 3);
+insert into RESERVATIONS values ('14016', 'G16', 'R8', 'BR01', '2-Jul-19', 3);
+insert into RESERVATIONS values ('14017', 'G20', 'HB3', 'RH01', '2-Jun-19', 5);
+insert into RESERVATIONS values ('14018', 'G22', 'R2', 'MC01', '14-Jun-19', 3);
+insert into RESERVATIONS values ('14019', 'G4', 'B8', 'GZ01', '21-Jun-19', 4);
+insert into RESERVATIONS values ('14020', 'G9', 'HB5', 'KS02', '6-Jun-19', 4);
+insert into RESERVATIONS values ('14021', 'G23', 'H4', 'GZ01', '07-Jul-19', 6);
+insert into RESERVATIONS values ('14022', 'G14', 'B4', 'SL01', '10-Jun-19', 5);
+insert into RESERVATIONS values ('14023', 'G10', 'R6', 'GZ01', '19-Jun-19', 3);
+insert into RESERVATIONS values ('14024', 'G16', 'B2', 'MR01', '9-Jul-19', 3);
+insert into RESERVATIONS values ('14025', 'G8', 'H3', 'DH01', '23-Jun-19', 4);
+insert into RESERVATIONS values ('14026', 'G12', 'HB1', 'KS02', '26-Jul-19', 7);
+insert into RESERVATIONS values ('14027', 'G18', 'R1', 'KS03', '19-May-19', 6);
+insert into RESERVATIONS values ('14028', 'G17', 'R1', 'KS03', '17-Jul-19', 3);
+insert into RESERVATIONS values ('14029', 'G15', 'R7', 'KS01', '5-Jul-19', 4);
+insert into RESERVATIONS values ('14030', 'G21', 'B5', 'UG01', '12-Jul-19', 4);
+insert into RESERVATIONS values ('14031', 'G13', 'HB5', 'KS02', '19-Jul-19', 4);
+insert into RESERVATIONS values ('14032', 'G22', 'B6', 'UG01', '6-Aug-19', 3);
+insert into RESERVATIONS values ('14033', 'G1', 'HB1', 'KS02', '21-Jul-19', 4);
+insert into RESERVATIONS values ('14034', 'G19', 'B4', 'SL01', '12-Jul-19', 5);
+insert into RESERVATIONS values ('14035', 'G18', 'B6', 'UG01', '1-Jul-19', 6);
+insert into RESERVATIONS values ('14036', 'G10', 'R6', 'GZ01', '14-Aug-19', 3);
+insert into RESERVATIONS values ('14037', 'G15', 'H4', 'GZ01', '07-Aug-19', 4);
+insert into RESERVATIONS values ('14038', 'G13', 'B2', 'MR01', '29-Jul-19', 4);
+insert into RESERVATIONS values ('14039', 'G8', 'HB1', 'KS02', '22-Aug-19', 4);
+insert into RESERVATIONS values ('14040', 'G6', 'R5', 'DH01', '16-Aug-19', 3);
+insert into RESERVATIONS values ('14041', 'G18', 'R8', 'BR01', '8-Aug-19', 6);
+insert into RESERVATIONS values ('14042', 'G5', 'R8', 'BR01', '8-Aug-19', 5);
+insert into RESERVATIONS values ('14043', 'G23', 'HB4', 'KS03', '26-Aug-19', 6);
+insert into RESERVATIONS values ('14044', 'G16', 'B9', 'UG01', '6-Aug-19', 3);
+insert into RESERVATIONS values ('14045', 'G14', 'H7', 'RH01', '18-Aug-19', 5);
+insert into RESERVATIONS values ('14046', 'G19', 'R3', 'AM01', '26-Aug-19', 5);
+insert into RESERVATIONS values ('14047', 'G22', 'R3', 'AM01', '26-Aug-19', 3);
+insert into RESERVATIONS values ('14048', 'G21', 'B4', 'SL01', '2-Aug-19', 4);
+insert into RESERVATIONS values ('14049', 'G10', 'H3', 'DH01', '18-Aug-19', 3);
+insert into RESERVATIONS values ('14050', 'G13', 'H8', 'MC01', '14-Aug-19', 4);
+
+select * from RESERVATIONS;
+
+==================================================================================
+
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE INVOICEDETAILS TABLE */
+
+create table INVOICEDETAILS (
+ INV#       char(5),
+ RID        char(5)       NOT NULL,
+ AID        varchar(3)    NOT NULL,
+ Primary key (INV#, RID),
+ Foreign Key (RID) REFERENCES RESERVATIONS (RID),
+ Foreign Key (AID) REFERENCES ACTIVITIES (AID));
+
+insert into INVOICEDETAILS values ('00001', '14001', 'H1');
+insert into INVOICEDETAILS values ('00003', '14011', 'HB5');
+insert into INVOICEDETAILS values ('00003', '14027', 'R1');
+insert into INVOICEDETAILS values ('00004', '14013', 'H1');
+insert into INVOICEDETAILS values ('00008', '14009', 'H3');
+insert into INVOICEDETAILS values ('00009', '14003', 'B3');
+insert into INVOICEDETAILS values ('00011', '14017', 'HB3');
+insert into INVOICEDETAILS values ('00012', '14020', 'HB5');
+insert into INVOICEDETAILS values ('00015', '14012', 'H3');
+insert into INVOICEDETAILS values ('00016', '14018', 'R2');
+insert into INVOICEDETAILS values ('00017', '14022', 'B4');
+insert into INVOICEDETAILS values ('00020', '14019', 'B8');
+insert into INVOICEDETAILS values ('00021', '14023', 'R6');
+insert into INVOICEDETAILS values ('00025', '14014', 'R1');
+insert into INVOICEDETAILS values ('00027', '14025', 'H3');
+insert into INVOICEDETAILS values ('00029', '14005', 'R8');
+insert into INVOICEDETAILS values ('00031', '14016', 'R8');
+insert into INVOICEDETAILS values ('00032', '14004', 'R8');
+insert into INVOICEDETAILS values ('00034', '14029', 'R7');
+insert into INVOICEDETAILS values ('00038', '14035', 'B6');
+insert into INVOICEDETAILS values ('00040', '14010', 'H7');
+insert into INVOICEDETAILS values ('00041', '14007', 'B9');
+insert into INVOICEDETAILS values ('00043', '14021', 'H4');
+insert into INVOICEDETAILS values ('00044', '14024', 'B2');
+insert into INVOICEDETAILS values ('00045', '14030', 'B5');
+insert into INVOICEDETAILS values ('00047', '14034', 'B4');
+insert into INVOICEDETAILS values ('00048', '14015', 'HB5');
+insert into INVOICEDETAILS values ('00048', '14028', 'R1');
+insert into INVOICEDETAILS values ('00049', '14008', 'R5');
+insert into INVOICEDETAILS values ('00051', '14031', 'HB5');
+insert into INVOICEDETAILS values ('00052', '14026', 'HB1');
+insert into INVOICEDETAILS values ('00055', '14002', 'R2');
+insert into INVOICEDETAILS values ('00055', '14033', 'HB1');
+insert into INVOICEDETAILS values ('00059', '14038', 'B2');
+insert into INVOICEDETAILS values ('00061', '14048', 'B4');
+insert into INVOICEDETAILS values ('00063', '14037', 'H4');
+insert into INVOICEDETAILS values ('00064', '14041', 'R8');
+insert into INVOICEDETAILS values ('00065', '14006', 'HB2');
+insert into INVOICEDETAILS values ('00065', '14042', 'R8');
+insert into INVOICEDETAILS values ('00066', '14032', 'B6');
+insert into INVOICEDETAILS values ('00067', '14044', 'B9');
+insert into INVOICEDETAILS values ('00070', '14036', 'R6');
+insert into INVOICEDETAILS values ('00071', '14040', 'R5');
+insert into INVOICEDETAILS values ('00075', '14050', 'H8');
+insert into INVOICEDETAILS values ('00076', '14039', 'HB1');
+insert into INVOICEDETAILS values ('00078', '14045', 'H7');
+insert into INVOICEDETAILS values ('00079', '14049', 'H3');
+insert into INVOICEDETAILS values ('00080', '14043', 'HB4');
+insert into INVOICEDETAILS values ('00082', '14046', 'R3');
+insert into INVOICEDETAILS values ('00084', '14047', 'R3');
+
+Select * from INVOICEDETAILS;

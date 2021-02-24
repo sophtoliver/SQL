@@ -1,0 +1,222 @@
+/* Assignment 4 - Sophia Toliver */
+
+/* Q1. (6) How many reservations for activities does each guide have? List the guide ID, last name, and hire date, and the
+number of reservations labeled Reservations per Guide. Show only those guides with 4 or more reservations
+and display guides with the largest number of reservations first. */
+
+SELECT G.GID, LName, HireDate, Count(RID) "Reservations per Guide"
+ FROM Personnel P JOIN Guides G
+   ON P.PID = G.GID 
+   JOIN Reservations R
+   ON G.GID = R.GID
+     GROUP BY G.GID, LName, HireDate
+	   HAVING Count(RID) > 4
+ORDER BY 4 Desc;
+
+
+/* Q2. (7) List the number of times each family stayed at the resort in 2019 and the total revenue collected from each
+family for the rented condos. Include the guest number, family last name and label other output as Number of
+Stays and Total Collected. Show guests with the highest total collected first. */
+
+SELECT G.Guest#, FName, Count(StartDate) "Number of Stays", SUM(WeeklyFee) "Total Collected"
+  FROM Guests G JOIN Families F
+   ON G.Guest# = F.Guest#
+   JOIN CondoStays CS
+   ON G.Guest# = CS.Guest#
+   JOIN Condos C
+   ON CS.Condo# = C.Condo#
+GROUP BY G.Guest#, FName
+ORDER BY SUM(WeeklyFee) DESC;
+
+/* Q3. (8) List all activity types and descriptions that the guests participated in during June.
+ Label the output Activity Types and Popular Activities in June. Do not include duplicate listings. Include the
+number of people participating in each activity and label the output, Number of Participants. Store the result
+in June_Activities. Show the output, listing the type first then the description, and finally the number
+participating. Order the output by description. */
+
+CREATE VIEW June_Activities AS
+SELECT DISTINCT Type "Activity Types", Description "Popular Activities in June", NumberInParty "Number of Participants"
+ FROM Reservations R JOIN Activities A
+  ON R.AID = A.AID
+   WHERE RDATE LIKE '2019-06%'
+
+
+SELECT * 
+ FROM June_Activities
+ORDER BY [Popular Activities in June];
+
+/* Q4. (10) Write the fully nested query to display the city and state of all guests who reserved a horseback riding activity
+in June or July. */
+
+SELECT Guest# "Guests Who Reserved HorseBack Riding in June or July", City "Guest City", State "Guest State"
+ FROM Guests
+  WHERE Guest# IN
+   (SELECT Guest# 
+    FROM Reservations 
+	 WHERE RDate BETWEEN '2019-06-01' AND '2019-07-31'
+	  AND AID IN 
+	   (SELECT AID 
+	     FROM Activities 
+		  WHERE Type = 'Horseback')); 
+
+/* Q5. (12) Unit C105 had quite a bit of damage after the last family stayed during the week of July 20, 2019.
+ Write a fully nested query to obtain a list of the children’s names alphabetically and their current ages. Label the
+names, Children Staying in C105 July 20th Week. */
+
+SELECT FName "Children Staying in C105 July 20th Week", DateDiff(year, birthdate, getdate()) "Age"
+ FROM Families
+   WHERE Guest# IN 
+    (SELECT Guest# 
+       FROM Condostays
+	     WHERE StartDate = '2019-07-20'
+		   AND Condo# IN
+		     (SELECT Condo# 
+			   FROM Condos 
+			    WHERE Bldg# = 'C'
+				 AND UnitNum = '105'));
+
+/* Q6. (7) How much money did each guest spend on activities in 2019? Include the guest's last name
+ and Money Spent on Activities. Include only those guests spending at least $240.00.
+ Display the highest values first. */
+
+SELECT LName, SUM(PPP*NumberInParty) "Money Spent on Activities"
+FROM Personnel P JOIN Guides G
+ ON P.PID = G.GID
+ JOIN Reservations R
+ ON G.GID = R.GID
+ JOIN Activities A
+ ON R.AID = A.AID
+GROUP BY LNAME
+ HAVING SUM(PPP*NumberInParty) >= 240.00
+  ORDER BY SUM(PPP*NumberInParty) DESC;
+
+/* Q7. (13) Write a fully nested query to display those guides who lead activities that are more than 10 miles. List their
+first and last name and years employed by the resort. Store the result in Ten_Mile_Guides. Display the data by
+the employee who has been with the resort the shortest amount of time first. */
+
+CREATE VIEW Ten_Mile_Guides AS
+SELECT FName "First Name", LName "Last Name", DateDiff(Year, HireDate, GetDate()) "Years Employed" 
+ FROM Personnel
+  WHERE PID IN
+   (SELECT GID 
+     FROM Guides
+	  WHERE GID IN
+	   (SELECT GID 
+	     FROM Reservations 
+		  WHERE AID IN
+		   (SELECT AID 
+		     FROM Activities 
+			  WHERE Distance > 10)));
+
+SELECT * 
+ FROM Ten_Mile_Guides 
+  ORDER BY [Years Employed];
+
+/* Q8. (11) Write a combination join and nested query to:
+List all activities that any guest of A104 participated. Housekeeping found a snake in the condo
+and are trying to figure out how it may have gotten there. List the date of the activity as well. Label the
+activity description, Activities for Families Staying in A104. */
+
+SELECT A.AID, Description "Activities for Families Staying in A104", RDate "Date"
+ FROM Activities A JOIN Reservations R
+  ON A.AID = R.AID
+   WHERE Guest# IN
+    (SELECT Guest# 
+	  FROM Condostays 
+	   WHERE Condo# IN
+	    (SELECT Condo#  
+		  FROM Condos 
+		   WHERE Bldg# = 'A'
+		    AND UnitNum = '104'));
+
+/* Q9. (7) Write a transaction script to store the following data: Show each record added. */
+
+BEGIN TRANSACTION
+
+/* New guests, Martin & Trudy Winters from Mankato Minnesots. They can be reached at 218-555-5872. We will assign them guest number G24. */
+INSERT into GUESTS values ('G24', 'Winters', 'Martin', 'Mankato', 'MN', '218-555-5872', 'Trudy'); 
+SELECT * FROM GUESTS;
+
+/* They have 2 children; son Trevor, who was 5 on June 2, 2017 and daughter Brooke, who
+turned 8 on Jan 15, 2017.*/ 
+INSERT into FAMILIES values ('G24', 'Trevor', 'son', '05-Jun-17');
+INSERT into FAMILIES values ('G24', 'Brooke', 'daughter', '15-Jan-17');
+SELECT * FROM FAMILIES; 
+
+/*  They will be staying at the resort the week starting, October 19th, 2019 in condo 5, A105. */
+INSERT into CONDOSTAYS values ('5', 'G24', '19-Oct-19', '26-Oct-19');
+INSERT into INVOICE values ('00086', '5', 'G24');
+SELECT * FROM CONDOSTAYS;
+SELECT * FROM INVOICE;
+
+/* They have not yet decided if they want to participate in any activities. */
+
+COMMIT;
+
+/* Q10. (24) Retrieve all invoice data (including details) for the McLean family (see data required on ERD). They are
+challenging their total bill. Your final output will include all invoice data as shown on the ERD. */
+
+CREATE VIEW McLean AS
+SELECT RLName
+ FROM Guests
+  WHERE RLName = 'McLean';
+
+CREATE VIEW Condo_For_McLeans AS
+SELECT Condo#, Guest#, StartDate "Arrival Date", EndDate "Departure Date"
+ FROM Condostays 
+  WHERE Guest# IN
+   (SELECT Guest# 
+     FROM Guests 
+	   WHERE RLNAME = 'McLean');
+
+CREATE VIEW McLean_Condo_Fee AS
+SELECT WeeklyFee "CondoFee"
+  FROM Condos 
+    WHERE Condo# IN
+	 (SELECT Condo# 
+	   FROM Condostays 
+	    WHERE Guest# IN
+		 (SELECT Guest# 
+            FROM Guests 
+	          WHERE RLNAME = 'McLean'));
+
+CREATE VIEW McLean_Invoice_Details AS
+SELECT Inv#, I.RID, I.AID, NumberInParty, PPP "Person Price", (NumberInParty * PPP) "Activity Total"
+  FROM Reservations R JOIN Activities A 
+     ON R.AID = A.AID
+	 JOIN InvoiceDetails I
+	 ON R.RID = I.RID
+        WHERE Guest# IN 
+           (SELECT Guest# 
+               FROM Guests 
+	             WHERE RLNAME = 'McLean')
+GROUP BY INV#, I.RID, I.AID, NumberInParty, PPP, (NumberInParty * PPP);
+
+CREATE VIEW McLean_Details_Total AS
+SELECT SUM(NumberInParty*PPP) "Details Total"
+   FROM Reservations R JOIN Activities A 
+     ON R.AID = A.AID
+        WHERE Guest# IN 
+           (SELECT Guest# 
+               FROM Guests 
+	             WHERE RLNAME = 'McLean');
+
+CREATE VIEW McLean_Invoice_Total AS
+SELECT SUM(CondoFee + "Details Total") "Invoice Total"
+ FROM McLean_Details_Total, McLean_Condo_Fee;
+
+CREATE VIEW McLean_SalesTax AS
+SELECT ("Invoice Total"*.08) "Sales Tax"
+  FROM Mclean_Invoice_Total;
+
+CREATE VIEW Mclean_TotalBilled AS
+SELECT ("Invoice Total" + "Sales Tax") "Total Billed"
+  FROM McLean_Invoice_Total, Mclean_SalesTax;
+
+/* Below select * queries show invoice vs invoice details seperate */
+
+SELECT *
+  FROM McLean, Condo_For_McLeans, McLean_Condo_Fee, McLean_Details_Total, McLean_Invoice_Total, McLean_SalesTax, Mclean_TotalBilled;
+
+SELECT *
+  FROM McLean_Invoice_Details;
