@@ -1,0 +1,1117 @@
+--MS3
+/* CREATE TABLES FOR PAMPERED PETS ONE TABLE AT A TIME  */
+
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE STAFF TABLE */
+
+create table STAFF
+       (StaffID                    char(9),
+        EmployeeType      varchar(30) Not null,
+        FName                   varchar(30) Not null,
+        LName                   varchar(30) Not null,
+        Street                     varchar(30),
+        City                         varchar(30),
+        Zip                          char(5),
+        State                       varchar(20),
+        Country                   varchar(20),
+        Phone                     char(10)    Not null,
+        PayRate                  decimal(4,2),
+        StartDate                 date,
+        AccountNumber      Decimal(12,0),
+        RoutingNumber	     Decimal(12,0),
+        FederalTaxDeduction	Decimal (3,2),
+        StateTaxDeduction	Decimal (3,2),
+        Primary Key(StaffID));
+
+Insert into STAFF values ('S10000000', 'recordkeeper', 'Shelby', 'Johnson', '1234 S. Side Trl.', 'Anthem', '85086', 'AZ', 'US', '6029202277', 12.50, '12-12-18','22223333','44445678','0.06','.05');
+Insert into STAFF values ('S20000000', 'recordkeeper', 'Ashley', 'Mackenzie', '5678 N. Asher St.', 'Phoenix', '85087', 'AZ', 'US', '4909726689', 12.50, '01-02-19','12900876','90875678','0.06','0.04');
+Insert into STAFF values ('S30000000', 'boardingstaff', 'Alecxander', 'Ambriz', '7880 Dead End Ln.', 'Mesa', '82023', 'AZ', 'US', '4802997168', 11.00, '02-20-17','12349764','12897654','0.04','0.03');
+Insert into STAFF values ('S40000000', 'boarding staff', 'Slim', 'Shady', '7881 Dead End Ln.', 'Mesa', '82023', 'AZ', 'US', '5408990998', 11.00, '02-02-17','89308673','12674893','0.05','0.03');
+Insert into STAFF values ('S50000000', 'boarding staff', 'Tony', 'Stark', '40409 N. Cross Timbers Trl.', 'Anthem', '85087', 'AZ', 'US','4800000090', 16.00, '01-01-14','89948673','12679893','0.04','0.03');
+Insert into STAFF values ('S60000000', 'boarding staff', 'Haylie', 'Burg', '72266 So Many Words St.', 'Phoenix', '87765', 'AZ', 'US','7809986790', 11.00, '09-09-19','89558673','12609763','0.07','0.03');
+Insert into STAFF values ('S70000000', 'boarding staff', 'Matthew', 'Mackles', '23469 Apple Rd.', 'Chandler', '90128', 'AZ', 'US', '4808888888', 11.00, '12-31-18','56782773','126904893','0.06','0.03');
+Insert into STAFF values ('S80000000', 'boarding staff', 'Jackson', 'Roberts', '1114 South Side Serpents', 'Chandler', '81007', 'AZ', 'US', '4803333333', 11.00, '11-29-18','89339876','16642893','0.05','0.03');
+Insert into STAFF values ('S90000000', 'accountant', 'John', 'Reynolds', '9100 W. Washer Ave.', 'Glendale', '76953', 'AZ', 'US', '4809997658', 12.50, '01-08-19','8986473','12678893','0.05','0.06');
+Insert into STAFF values ('S11000000', 'accountant', 'Abraham', 'Mohammad', '3390 Here to There Blvd.', 'Surprise', '12234', 'AZ', 'US', '623078999', 11.00, '04-18-15','89898673','12677793','0.08','0.03');
+Insert into STAFF values ('S12000000', 'accountant', 'David', 'Rajkstan', '2345 Rockley', 'Surprise', '56772', 'AZ', 'US', '6230246629', 11.00, '08-13-14','89838673','78544893','0.06','0.06');
+Insert into STAFF values ('S13000000', 'accountant', 'Romand', 'Ramada', '40408 Marco Polo Ln.', 'Glendale', '33390', 'AZ', 'US', '6020437890', 11.00, '10-21-17','88838673','12904893','0.05','0.05');
+
+
+Select * From Staff;
+
+-- Testing for entity integrity --
+
+Select *
+	From Staff
+		Where StaffID is null
+---------------------------------------------------------------------
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE CUSTOMER TABLE */
+
+Create table CUSTOMERS
+(CustomerID			char (9),
+CFName			varchar (30) Not null,
+CLName			varchar (30) Not null,
+Street				varchar (30),
+City				varchar (20),
+State				varchar (20),
+Zip				char (5),
+Country			varchar (20),
+PhoneAreaCode		char (3),
+Phone				char (8),
+CreditCard			char (16),
+Primary key (CustomerID));
+
+insert into CUSTOMERS values ('C00000001','Rebecca','Alsop','738 Myrtle St','Tempe', 'AZ','85281','USA',480,'687-5472','9079131847515024');
+insert into CUSTOMERS values ('C00000002','Lisa','Miller','382 Columbia St', 'Gilbert', 'AZ','85142','USA',480,'555-3873','3820961955471731');
+insert into CUSTOMERS values ('C00000003','Carl','Wilson','927 Pheasant Dr', 'Gilbert', 'AZ','85142','USA',480,'433-4955','6047524726693627');
+insert into CUSTOMERS values ('C00000004','Lillian','Mackenzie', '372 Arch St', 'Scottsdale', 'AZ','85054','USA',480,'840-3774','4626061202252464');
+insert into CUSTOMERS values ('C00000005','Victoria','Pullman','843 Chapel St', 'Phoenix', 'AZ','85001','USA',480,'781-7493','9136010546532328');
+insert into CUSTOMERS values ('C00000006','Gordon','Underwood', '749 Depot St', 'Phoenix', 'AZ','85001','USA',480,'560-9160','9766776617910835');
+insert into CUSTOMERS values ('C00000007','Emma','Henderson', '129 Durham Ct', 'Scottsdale', 'AZ','85054','USA',480,'510-1810','8610897194281955');
+insert into CUSTOMERS values ('C00000008','Anthony','Abraham', '439 Bayberry Dr', 'Phoenix', 'AZ','85003','USA',480,'101-3464','2536532923890080');
+insert into CUSTOMERS values ('C00000009','William','May', '429 Magnolia Dr', 'Phoenix', 'AZ','85002','USA',480,'638-6333','2618205629222801');
+insert into CUSTOMERS values ('C00000010','Oliver','Cornish', '632 Chesterton Dr', 'Phoenix', 'AZ','85002','USA',480,'635-1463','7621070676934744');
+insert into CUSTOMERS values ('C00000011','Abigail','Manning', '302 Winding Way', 'Phoenix', 'AZ','85002','USA',480,'906-2908','3398887068962515');
+insert into CUSTOMERS values ('C00000012','Dominic','Vance', '999 Sunset Ave', 'Phoenix', 'AZ','85001','USA',480,'058-6928','9488186017616102');
+insert into CUSTOMERS values ('C00000013','Kevin','Short', '897 Lemon St', 'Phoenix', 'AZ','85002','USA',480,'106-0310','2097559811753144');
+insert into CUSTOMERS values ('C00000014','Michelle','Davies', '896 Sherwood Dr', 'Phoenix', 'AZ','85003','USA',480,'389-7002','9821970545451433');
+insert into CUSTOMERS values ('C00000015','Wendy','Gray', '123 Walnut Ave', 'Phoenix', 'AZ','85003','USA',480,'715-2986','2374809396889053');
+insert into CUSTOMERS values ('C00000016','Liam','King', '124 Briarwood Ct', 'Phoenix', 'AZ','85003','USA',480,'437-4854','4944553854630138');
+insert into CUSTOMERS values ('C00000017','Jacob','Dowd', '125 Ocean Dr', 'Scottsdale', 'AZ','85054','USA',480,'778-7246','1256705093830310');
+insert into CUSTOMERS values ('C00000018','Isaac','Baker', '234 Franklin Ave', 'Phoenix', 'AZ','85001','USA',480,'421-9824','4701344091518855');
+insert into CUSTOMERS values ('C00000019','Chloe','Bower', '567 James St', 'Scottsdale', 'AZ','85054','USA',480,'201-3345','6601542079299454');
+insert into CUSTOMERS values ('C00000020','Frank','Ross', '568  Laurel St','Tempe', 'AZ','85281','USA',480,'589-7307','8460106905408556');
+insert into CUSTOMERS values ('C00000021','Justin','Bieber', '916 Orange St', 'Phoenix', 'AZ','85001','USA',480,'789-9149','2345861985784679');
+insert into CUSTOMERS values ('C00000022','Aubrey','Graham', '569 Harrison St', 'Phoenix', 'AZ','85001','USA',480,'585-2137','8375054322552150');
+insert into CUSTOMERS values ('C00000023','Oprah','Winfrey', '354 Lincoln Ave', 'Tempe', 'AZ','85281','USA',480,'047-6037','0608810696434141');
+insert into CUSTOMERS values ('C00000024','Elvis','Presley', '345 Brandywine Dr', 'Phoenix', 'AZ','85001','USA',480,'526-4869','8570093515179526');
+insert into CUSTOMERS values ('C00000025','Barack','Obama', '981 York Rd', 'Scottsdale', 'AZ','85054','USA',480,'679-2157','5600957538237362');
+insert into CUSTOMERS values ('C00000026','Jonny','Depp', '821 Court St', 'Phoenix', 'AZ','85001','USA',480,'007-9579','4662349486648623');
+insert into CUSTOMERS values ('C00000027','Jim','Carrey', '337 Forest Dr',  'Tempe', 'AZ','85281','USA',480,'951-9758','2516120097640460');
+insert into CUSTOMERS values ('C00000028','Michael','Jordan', '222 College Ave', 'Phoenix', 'AZ','85001','USA',480,'411-2418','3036458065092596');
+insert into CUSTOMERS values ('C00000029','Jennifer','Aniston', '688 University Dr', 'Scottsdale', 'AZ','85054','USA',480,'197-7607','7127148171895138');
+insert into CUSTOMERS values ('C00000030','Leonardo','DiCaprio', '777 Coral Ln', 'Phoenix', 'AZ','85001','USA',480,'300-1800','1445676142205239');
+
+Select * from CUSTOMERS;
+
+--Testing for entity integrity--
+Select *
+	From Customers
+		Where CustomerID is null
+---------------------------------------------------------------------
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE PETS TABLE */
+
+create table PETS (
+   PetID	char(9)		Not null,
+   CustomerID	char(9)		Not null,
+   PetName	varchar(20)     Not null,
+   Species	char(3)		Not null,
+   Breed	varchar(30)	Not null,
+   Weight	decimal (5,2)	Not null,
+   DOB		Date		Not null,
+   Gender	char(1)		Not null,
+   Neutered	char(1)		Not null,
+   Primary Key (PetID),
+   Foreign Key (CustomerID) REFERENCES Customers(CustomerID));
+
+insert into PETS values ('F00000001','C00000001','Wheeler','Cat','Ragamuffin cat','17','08/14/2013','M','Y');
+insert into PETS values ('F00000002','C00000002','Bastet','Cat','Cornish Rex','7','09/30/2015','F','Y');
+insert into PETS values ('F00000003','C00000003','TiaoWen','Cat','Bombay cat','9','05/06/2018','M','N');
+insert into PETS values ('F00000004','C00000004','WorldDestroyer','Cat','Pixie-bob','11','03/21/2014','F','Y');
+insert into PETS values ('F00000005','C00000005','CatTail','Cat','Chartreux','10','12/14/2015','M','Y');
+insert into PETS values ('F00000006','C00000006','Shaggy','Cat','Havana Brown','8','10/04/2017','F','N');
+insert into PETS values ('F00000007','C00000007','Chase','Cat','Japanese Bobtail','6','04/30/2014','M','Y');
+insert into PETS values ('F00000008','C00000008','Ophelia','Cat','Chausie','20','03/13/2014','F','Y');
+insert into PETS values ('F00000009','C00000009','Aggy','Cat','Somali','8','09/05/2015','M','N');
+insert into PETS values ('F00000010','C00000010','Beeker','Cat','Balinese','6','12/09/2012','F','Y');
+insert into PETS values ('F00000011','C00000011','Hamsta','Cat','Exotic Shorthair','13','11/01/2013','M','Y');
+insert into PETS values ('F00000012','C00000012','Dream','Cat','Ragdoll','15','05/07/2017','F','N');
+insert into PETS values ('F00000013','C00000013','Wrath','Cat','Norwegian Forest','14','10/31/2016','M','Y');
+insert into PETS values ('F00000014','C00000014','Avonlea','Cat','Maine Coon','12','04/17/2013','F','Y');
+insert into PETS values ('F00000015','C00000015','Kitteh','Cat','Savannah','11','12/27/2016','M','N');
+insert into PETS values ('D00000001','C00000016','Magnet','Dog','Lhasa Apso','13','03/15/2012','F','Y');
+insert into PETS values ('D00000002','C00000017','Rain','Dog','Labrador Retriever','66','11/22/2017','M','Y');
+insert into PETS values ('D00000003','C00000018','Snowberry','Dog','French Bulldog','22','12/11/2017','F','N');
+insert into PETS values ('D00000004','C00000019','Elroy','Dog','German Shepherd','67','06/10/2017','M','Y');
+insert into PETS values ('D00000005','C00000020','Swizzle','Dog','Yorkshire Terrier','7','10/06/2018','F','Y');
+insert into PETS values ('D00000006','C00000021','Flicker','Dog','Pug','15','07/27/2015','M','N');
+insert into PETS values ('D00000007','C00000022','Polly','Dog','Old English Sheepdog','80','10/08/2012','F','Y');
+insert into PETS values ('D00000008','C00000023','Bentley','Dog','Pekingese','6','02/22/2012','M','Y');
+insert into PETS values ('D00000009','C00000024','Nacho','Dog','Jack Russell Terrier','14','08/03/2016','F','N');
+insert into PETS values ('D00000010','C00000025','Omai','Dog','Havanese','12','11/14/2014','M','Y');
+insert into PETS values ('D00000011','C00000026','Hubble','Dog','Alaskan Malamute','85','09/13/2012','F','Y');
+insert into PETS values ('D00000012','C00000027','Metro','Dog','Shiba Inu','21','08/15/2018','M','N');
+insert into PETS values ('D00000013','C00000028','Newsprint','Dog','Cavalier King Charles Spaniel','14','08/09/2017','F','Y');
+insert into PETS values ('D00000014','C00000029','Macbeth','Dog','Greyhound','69','11/08/2017','M','Y');
+insert into PETS values ('D00000015','C00000030','Mole','Dog','St Bernard','157','01/25/2013','F','N');
+
+Select * From Pets
+
+--Testing for entity integrity--
+Select *
+	From Pets
+		Where PetID is null
+-------------------------------------------------
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE COLOR TABLE */
+
+create table COLOR (
+  PetID	char(9)		Not null,
+  Color	char(8)		Not null,
+  Primary Key (PetID, Color));
+ 
+insert into COLOR values ('F00000001','White');
+insert into COLOR values ('F00000002','Black');
+insert into COLOR values ('F00000003','Brown');
+insert into COLOR values ('F00000004','Grey');
+insert into COLOR values ('F00000005','Gold');
+insert into COLOR values ('F00000006','White');
+insert into COLOR values ('F00000007','Grey');
+insert into COLOR values ('F00000008','Back');
+insert into COLOR values ('F00000009','White');
+insert into COLOR values ('F00000010','Black');
+insert into COLOR values ('F00000011','Brown');
+insert into COLOR values ('F00000012','Grey');
+insert into COLOR values ('F00000013','Gold');
+insert into COLOR values ('F00000014','White');
+insert into COLOR values ('F00000015','Grey');
+insert into COLOR values ('D00000001','Back');
+insert into COLOR values ('D00000002','White');
+insert into COLOR values ('D00000003','Black');
+insert into COLOR values ('D00000004','Brown');
+insert into COLOR values ('D00000005','Grey');
+insert into COLOR values ('D00000006','Gold');
+insert into COLOR values ('D00000007','White');
+insert into COLOR values ('D00000008','Grey');
+insert into COLOR values ('D00000009','Back');
+insert into COLOR values ('D00000010','White');
+insert into COLOR values ('D00000011','Black');
+insert into COLOR values ('D00000012','Brown');
+insert into COLOR values ('D00000013','Grey');
+insert into COLOR values ('D00000014','Gold');
+insert into COLOR values ('D00000015','White');
+insert into COLOR values ('F00000001','Grey');
+insert into COLOR values ('F00000002','Back');
+insert into COLOR values ('F00000003','White');
+insert into COLOR values ('F00000004','Black');
+insert into COLOR values ('F00000005','Brown');
+insert into COLOR values ('F00000006','Grey');
+insert into COLOR values ('F00000007','Gold');
+insert into COLOR values ('F00000008','White');
+insert into COLOR values ('F00000009','Grey');
+insert into COLOR values ('F00000010','Back');
+insert into COLOR values ('F00000011','White');
+insert into COLOR values ('F00000012','Black');
+insert into COLOR values ('F00000013','Brown');
+insert into COLOR values ('F00000014','Grey');
+insert into COLOR values ('F00000015','Gold');
+insert into COLOR values ('D00000001','White');
+insert into COLOR values ('D00000002','Grey');
+insert into COLOR values ('D00000003','Back');
+insert into COLOR values ('D00000004','White');
+insert into COLOR values ('D00000005','Black');
+insert into COLOR values ('D00000006','Brown');
+insert into COLOR values ('D00000007','Grey');
+insert into COLOR values ('D00000008','Gold');
+insert into COLOR values ('D00000009','White');
+insert into COLOR values ('D00000010','Grey');
+insert into COLOR values ('D00000011','Back');
+insert into COLOR values ('D00000012','White');
+insert into COLOR values ('D00000013','Black');
+insert into COLOR values ('D00000014','Brown');
+insert into COLOR values ('D00000015','Grey');
+
+ 
+Select * from COLOR;
+
+--Testing for entity integrity--
+Select *
+	From Pets
+		Where PetID is null or color is null
+-----------------------------------------------
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE PAYCHECK TABLE */
+
+Create table PAYCHECK
+	(StaffID 		Char(9) Not Null,
+	PayCycle		BigInt 	 Not Null,
+	Date			date	 Not Null,
+	Amount		Decimal(6,2) Not Null,
+	YTDSalary 		Decimal(8,2) Not Null,
+	Primary key (StaffID, PayCycle),
+	Foreign Key (StaffID) REFERENCES STAFF (StaffID));
+
+Insert into PAYCHECK Values('S10000000', 1, '08-14-14', 1254.67, 1254.67);
+Insert into PAYCHECK Values('S20000000', 1, '08-14-14', 756.88, 756.88);
+Insert into PAYCHECK Values('S30000000', 1, '08-14-14', 363.67, 363.67);
+Insert into PAYCHECK Values('S40000000', 1, '08-14-14', 1004.57, 1004.57);
+Insert into PAYCHECK Values('S50000000', 1, '08-14-14', 737.00, 737.00);
+Insert into PAYCHECK Values('S10000000', 2, '08-28-14', 1206.53, 2461.20);
+Insert into PAYCHECK Values('S20000000', 2, '08-28-14', 1000.00, 1756.88);
+Insert into PAYCHECK Values('S30000000', 2, '08-28-14', 800.00, 1163.67);
+Insert into PAYCHECK Values('S40000000', 2, '08-28-14', 1000.00, 2004.57);
+Insert into PAYCHECK Values('S50000000', 2, '08-28-14', 750.00, 1487.00);
+Insert into PAYCHECK Values('S60000000', 2, '08-28-14', 800.00, 800.00);
+Insert into PAYCHECK Values('S70000000', 2, '08-28-14', 700.00, 700.00);
+Insert into PAYCHECK Values('S80000000', 2, '08-28-14', 900.00, 900.00);
+Insert into PAYCHECK Values('S10000000', 3, '09-11-14', 900.00, 3361.20);
+Insert into PAYCHECK Values('S20000000', 3, '09-11-14', 750.00, 2506.88);
+Insert into PAYCHECK Values('S30000000', 3, '09-11-14', 800.00, 1963.67);
+Insert into PAYCHECK Values('S40000000', 3, '09-11-14', 500.00, 2504.57);
+Insert into PAYCHECK Values('S50000000', 3, '09-11-14', 700.00, 2187.00);
+Insert into PAYCHECK Values('S60000000', 3, '09-11-14', 600.00, 1400.00);
+Insert into PAYCHECK Values('S70000000', 3, '09-11-14', 900.00, 1600.00);
+Insert into PAYCHECK Values('S80000000', 3, '09-11-14', 800.00, 1700.00);
+Insert into PAYCHECK Values('S90000000', 3, '09-11-14', 900.00, 900.00);
+Insert into PAYCHECK Values('S11000000', 3, '09-11-14', 700.00, 700.00);
+Insert into PAYCHECK Values('S12000000', 3, '09-11-14', 400.00, 400.00);
+Insert into PAYCHECK Values('S13000000', 3, '09-11-14', 700.00, 700.00);
+Insert into PAYCHECK Values('S10000000', 4, '09-25-14', 900.00, 4261.20);
+Insert into PAYCHECK Values('S20000000', 4, '09-25-14', 700.00, 3204.57);
+Insert into PAYCHECK Values('S40000000', 4, '09-25-14', 1000.00, 3504.57);
+Insert into PAYCHECK Values('S50000000', 4, '09-25-14', 800.00, 2987.00);
+Insert into PAYCHECK Values('S60000000', 4, '09-25-14', 600.00, 2000.00);
+	
+Select * from PAYCHECK;	
+
+--Testing for entity integrity--
+Select *
+	From Paycheck
+		Where StaffID is null or PayCycle is null
+-----------------------------------------------------
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE ABSENCES TABLE */
+
+create table ABSENCES
+       (StaffID      char(9),
+        Date          date,
+        Primary Key(StaffID, Date),
+        Foreign Key(StaffID) REFERENCES STAFF(StaffID));
+
+insert into ABSENCES values ('S10000000', '10-01-18');
+insert into ABSENCES values ('S10000000', '02-01-19');
+insert into ABSENCES values ('S10000000', '02-02-19');
+insert into ABSENCES values ('S20000000', '03-03-19');
+insert into ABSENCES values ('S30000000', '12-03-19');
+insert into ABSENCES values ('S50000000', '10-03-19');
+insert into ABSENCES values ('S70000000', '11-14-19');
+insert into ABSENCES values ('S11000000', '01-05-19');
+insert into ABSENCES values ('S12000000', '10-05-19');
+insert into ABSENCES values ('S12000000', '11-05-19');
+insert into ABSENCES values ('S12000000', '03-16-19');
+insert into ABSENCES values ('S12000000', '12-06-19');
+insert into ABSENCES values ('S13000000', '02-06-19');
+insert into ABSENCES values ('S13000000', '01-07-19');
+insert into ABSENCES values ('S11000000', '04-07-19');
+insert into ABSENCES values ('S11000000', '05-07-19');
+insert into ABSENCES values ('S90000000', '06-07-19');
+insert into ABSENCES values ('S80000000', '08-07-19');
+insert into ABSENCES values ('S90000000', '09-07-19');
+insert into ABSENCES values ('S11000000', '11-07-19');
+insert into ABSENCES values ('S60000000', '10-07-19');
+insert into ABSENCES values ('S20000000', '09-07-19');
+insert into ABSENCES values ('S60000000', '04-07-19');
+insert into ABSENCES values ('S50000000', '28-07-19');
+insert into ABSENCES values ('S70000000', '01-08-19');
+insert into ABSENCES values ('S20000000', '11-08-19');
+insert into ABSENCES values ('S20000000', '12-08-19');
+insert into ABSENCES values ('S11000000', '05-09-19');
+insert into ABSENCES values ('S13000000', '08-09-19');
+insert into ABSENCES values ('S10000000', '12-10-19');
+insert into ABSENCES values ('S30000000', '06-10-19');
+
+Select * from ABSENCES;  
+
+--Testing for entity integrity--
+Select *
+	From Absences
+		Where StaffID is null or Date is null
+------------------------------------------------------
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE PART_TIMERS TABLE */
+
+create table PART_TIMERS
+      (StaffID                      char(9), 
+       RFName                   varchar(50),
+       RLName                   varchar(50),
+       EmergencyContact   varchar(50),
+       ECPhone                  char(10)
+       Primary key(StaffID),
+       Foreign key(StaffID) REFERENCES STAFF (StaffID)); 
+
+insert into PART_TIMERS values ('S90000000', 'Sabrina', 'Jacobs', 'Michael', '6029202278');
+insert into PART_TIMERS values ('S11000000', 'Nicole', 'Crispo', 'Mikey', '8192348879');
+insert into PART_TIMERS values ('S12000000', 'Tanya', 'Toliver', 'Katy', '4809971234');
+insert into PART_TIMERS values ('S13000000', 'David', 'Michaels', 'Shannon', '602883008');
+
+Select * from PART_TIMERS;
+
+--Testing for entity integrity--
+Select *
+	From Part_Timers
+		Where StaffID is Null
+------------------------------------------------------
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE FULL_TIMERS TABLE */
+
+Create table FULL_TIMERS
+(StaffID 			char (9),
+MedicalDeduction		decimal (7,2),
+DentalDeduction			decimal (7,2),
+DisabilityDeduction		decimal (7,2),
+LifeInsuranceDeduction		decimal (7,2),
+Primary key (StaffID),
+Foreign key (StaffID) REFERENCES STAFF (StaffID));
+
+Insert into FULL_TIMERS values ('S30000000',11000,1500,1200,800);
+Insert into FULL_TIMERS values ('S40000000',11000,1500,1200,800);
+Insert into FULL_TIMERS values ('S50000000',13000,2000,1400,1000);
+Insert into FULL_TIMERS values ('S60000000',11000,1500,1200,800);
+Insert into FULL_TIMERS values ('S70000000',11000,1500,1200,800);
+Insert into FULL_TIMERS values ('S80000000',11000,1500,1200,800);
+Insert into FULL_TIMERS values ('S10000000',12000,2000,1300,900);
+Insert into FULL_TIMERS values ('S20000000',12000,2000,1300,900);
+
+Select * from FULL_TIMERS;
+
+--Testing for entity integrity--
+Select *
+	From Full_Timers
+		Where StaffID is null
+----------------------------------------------------
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE RECORD_KEEPERS TABLE */
+
+Create table RECORD_KEEPERS(
+	StaffID 		char(9),
+	DegreeObtained	Varchar(30),
+	GradeDate		Date,
+	YrsOfExperience	Tinyint,
+	Primary Key (StaffID),
+	Foreign Key (StaffID) REFERENCES Full_Timers (StaffID));
+
+Insert into RECORD_KEEPERS Values('S10000000', 'Accounting', '05-13-13', '4')
+Insert into RECORD_KEEPERS Values('S20000000', 'Computer Information Systems', '05-15-14', '2')
+
+Select * from RECORD_KEEPERS;
+
+--Testing for entity integrity--
+Select *
+	From Record_Keepers
+		Where StaffID is null
+------------------------------------------------------
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE BOARDING_STAFF TABLE */
+
+Create table BOARDING_STAFF(
+StaffID		char (9),
+Reference		varchar(20),
+Primary key (StaffID),
+Foreign key (StaffID) REFERENCES Full_Timers (StaffID));
+
+Insert into BOARDING_STAFF values ('S30000000','Lilian');
+Insert into BOARDING_STAFF values ('S40000000','Nicole');
+Insert into BOARDING_STAFF values ('S50000000','John');
+Insert into BOARDING_STAFF values ('S60000000','Mac');
+Insert into BOARDING_STAFF values ('S70000000','Mindy');
+Insert into BOARDING_STAFF values ('S80000000','Jerry');
+
+Select * from BOARDING_STAFF;
+
+--Testing for entity integrity--
+Select *
+	From Boarding_Staff
+		Where StaffID is null
+-------------------------------------------------------
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE RESERVATIONS TABLE */
+
+create table RESERVATIONS (
+  Reservation#		Decimal(8,0)			Not null,
+  TimeIn			Char(5)				,
+  TimeGone			Char(5)				,
+  DateofCheckIn		Date			       		,
+  DateofCheckOut	Date					,
+  StaffID			char(9)				,
+  Price			Decimal (8,2)				,
+   Primary Key (Reservation#),
+   Foreign Key (StaffID) References Staff(StaffID));
+
+insert into RESERVATIONS values ('10000001','12:15','12:42','05/26/2019','05/29/2019','S30000000','30');
+insert into RESERVATIONS values ('10000002','09:14','08:08','04/13/2019','04/14/2019','S40000000','10');
+insert into RESERVATIONS values ('10000003','12:45','13:36','05/21/2019','05/23/2019','S80000000','20');
+insert into RESERVATIONS values ('10000004','14:51','09:18','02/14/2019','02/17/2019','S50000000','30');
+insert into RESERVATIONS values ('10000005','14:10','16:26','08/03/2019','08/07/2019','S70000000','40');
+insert into RESERVATIONS values ('10000006','15:03','10:58','05/18/2019','05/21/2019','S60000000','30');
+insert into RESERVATIONS values ('10000007','11:32','15:23','02/23/2019','02/24/2019','S30000000','10');
+insert into RESERVATIONS values ('10000008','17:45','15:44','09/21/2019','09/23/2019','S40000000','20');
+insert into RESERVATIONS values ('10000009','10:58','15:26','08/20/2019','08/23/2019','S50000000','30');
+insert into RESERVATIONS values ('10000010','11:59','08:10','07/11/2019','07/15/2019','S60000000','40');
+insert into RESERVATIONS values ('10000011','17:03','09:17','02/25/2019','02/28/2019','S80000000','30');
+insert into RESERVATIONS values ('10000012','17:05','14:57','03/31/2019','04/01/2019','S70000000','10');
+insert into RESERVATIONS values ('10000013','17:15','14:06','02/06/2019','02/08/2019','S30000000','20');
+insert into RESERVATIONS values ('10000014','15:59','17:51','02/21/2019','02/24/2019','S50000000','30');
+insert into RESERVATIONS values ('10000015','14:07','14:31','03/15/2019','03/19/2019','S60000000','40');
+insert into RESERVATIONS values ('10000016','10:48','10:21','03/12/2019','03/15/2019','S40000000','30');
+insert into RESERVATIONS values ('10000017','17:41','12:17','02/24/2019','02/25/2019','S80000000','10');
+insert into RESERVATIONS values ('10000018','16:42','17:02','08/30/2019','09/01/2019','S70000000','20');
+insert into RESERVATIONS values ('10000019','16:19','11:52','08/15/2019','08/18/2019','S30000000','30');
+insert into RESERVATIONS values ('10000020','10:30','13:51','04/05/2019','04/09/2019','S40000000','40');
+insert into RESERVATIONS values ('10000021','17:57','16:22','03/07/2019','03/10/2019','S50000000','30');
+insert into RESERVATIONS values ('10000022','17:28','14:11','02/20/2019','02/21/2019','S40000000','10');
+insert into RESERVATIONS values ('10000023','15:33','12:23','06/18/2019','06/20/2019','S30000000','20');
+insert into RESERVATIONS values ('10000024','09:10','17:35','08/21/2019','08/24/2019','S80000000','30');
+insert into RESERVATIONS values ('10000025','11:06','09:55','02/12/2019','02/16/2019','S70000000','40');
+insert into RESERVATIONS values ('10000026','12:55','08:15','03/04/2019','03/07/2019','S40000000','30');
+insert into RESERVATIONS values ('10000027','16:03','10:27','05/16/2019','05/17/2019','S50000000','10');
+insert into RESERVATIONS values ('10000028','15:01','13:35','03/29/2019','03/31/2019','S80000000','20');
+insert into RESERVATIONS values ('10000029','17:48','16:39','07/10/2019','07/13/2019','S30000000','30');
+insert into RESERVATIONS values ('10000030','15:26','17:24','02/18/2019','02/22/2019','S40000000','40');
+insert into RESERVATIONS values ('10000031','16:40','12:12','06/24/2019','06/27/2019','S80000000','63');
+insert into RESERVATIONS values ('10000032','16:27','15:25','09/15/2019','09/16/2019','S50000000','21');
+insert into RESERVATIONS values ('10000033','09:36','12:58','04/28/2019','04/30/2019','S70000000','42');
+insert into RESERVATIONS values ('10000034','10:44','10:26','02/23/2019','02/26/2019','S60000000','63');
+insert into RESERVATIONS values ('10000035','17:30','16:46','06/17/2019','06/21/2019','S30000000','84');
+insert into RESERVATIONS values ('10000036','12:55','13:47','09/19/2019','09/22/2019','S40000000','63');
+insert into RESERVATIONS values ('10000037','11:21','15:28','01/23/2019','01/24/2019','S50000000','21');
+insert into RESERVATIONS values ('10000038','12:57','08:35','02/13/2019','02/15/2019','S60000000','42');
+insert into RESERVATIONS values ('10000039','12:23','08:37','05/22/2019','05/25/2019','S80000000','63');
+insert into RESERVATIONS values ('10000040','13:11','11:20','05/05/2019','05/09/2019','S70000000','84');
+insert into RESERVATIONS values ('10000041','08:37','15:20','09/03/2019','09/06/2019','S30000000','63');
+insert into RESERVATIONS values ('10000042','17:33','10:05','01/15/2019','01/16/2019','S50000000','21');
+insert into RESERVATIONS values ('10000043','16:37','13:15','02/25/2019','02/27/2019','S60000000','42');
+insert into RESERVATIONS values ('10000044','09:00','11:36','09/19/2019','09/22/2019','S40000000','63');
+insert into RESERVATIONS values ('10000045','16:07','15:11','06/11/2019','06/15/2019','S80000000','84');
+insert into RESERVATIONS values ('10000046','13:15','15:07','07/31/2019','08/03/2019','S70000000','63');
+insert into RESERVATIONS values ('10000047','09:24','08:35','01/17/2019','01/18/2019','S30000000','21');
+insert into RESERVATIONS values ('10000048','13:56','16:34','04/01/2019','04/03/2019','S40000000','42');
+insert into RESERVATIONS values ('10000049','10:48','12:31','03/06/2019','03/09/2019','S50000000','63');
+insert into RESERVATIONS values ('10000050','15:38','09:03','05/26/2019','05/30/2019','S40000000','84');
+insert into RESERVATIONS values ('10000051','09:57','15:04','09/21/2019','09/24/2019','S30000000','63');
+insert into RESERVATIONS values ('10000052','12:17','10:56','02/22/2019','02/23/2019','S80000000','21');
+insert into RESERVATIONS values ('10000053','16:19','17:33','08/19/2019','08/21/2019','S70000000','42');
+insert into RESERVATIONS values ('10000054','11:45','13:13','01/23/2019','01/26/2019','S40000000','63');
+insert into RESERVATIONS values ('10000055','11:13','13:34','09/30/2019','10/04/2019','S50000000','84');
+insert into RESERVATIONS values ('10000056','16:30','17:56','08/01/2019','08/04/2019','S80000000','63');
+insert into RESERVATIONS values ('10000057','11:18','13:44','02/04/2019','02/05/2019','S30000000','21');
+insert into RESERVATIONS values ('10000058','15:00','16:07','09/28/2019','09/30/2019','S40000000','42');
+insert into RESERVATIONS values ('10000059','13:29','15:15','08/11/2019','08/14/2019','S80000000','63');
+insert into RESERVATIONS values ('10000060','10:57','16:41','01/14/2019','01/18/2019','S50000000','84');
+
+Select * from RESERVATIONS;
+
+--Testing for entity integrity--
+Select *
+	From Reservations
+		Where Reservation# is null
+---------------------------------------------------------------------------
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE PETS_RESERVATION TABLE */
+
+create table RESERVATION_DETAILS(
+Reservation#          	decimal(8,0),
+PetID                  	char (9),
+Vaccinations		char (1),							
+Bath			char (1),
+NumMedGiven	varchar (2),
+Primary key (Reservation#,PetID),
+Foreign Key (Reservation#) References Reservations(Reservation#)) ;
+
+insert into RESERVATION_DETAILS values ('10000001','F00000001','Y','N','2');
+insert into RESERVATION_DETAILS values ('10000002','F00000002','Y','Y','2');
+insert into RESERVATION_DETAILS values ('10000003','F00000003','Y','Y','1');
+insert into RESERVATION_DETAILS values ('10000004','F00000004','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000005','F00000005','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000006','F00000006','Y','N','2');
+insert into RESERVATION_DETAILS values ('10000007','F00000007','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000008','F00000008','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000009','F00000009','Y','N','2');
+insert into RESERVATION_DETAILS values ('10000010','F00000010','Y','Y','1');
+insert into RESERVATION_DETAILS values ('10000011','F00000011','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000012','F00000012','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000013','F00000013','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000014','F00000014','Y','Y','1');
+insert into RESERVATION_DETAILS values ('10000015','F00000015','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000016','F00000015','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000017','F00000014','Y','Y','0');
+insert into RESERVATION_DETAILS values ('10000018','F00000014','Y','Y','0');
+insert into RESERVATION_DETAILS values ('10000019','F00000011','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000020','F00000002','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000021','F00000002','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000022','F00000004','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000023','F00000004','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000024','F00000005','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000025','F00000001','Y','Y','0');
+insert into RESERVATION_DETAILS values ('10000026','F00000013','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000027','F00000007','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000028','F00000009','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000029','F00000010','Y','Y','0');
+insert into RESERVATION_DETAILS values ('10000030','F00000003','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000031','D00000001','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000032','D00000002','Y','N','2');
+insert into RESERVATION_DETAILS values ('10000033','D00000003','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000034','D00000004','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000035','D00000005','Y','Y','0');
+insert into RESERVATION_DETAILS values ('10000036','D00000006','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000037','D00000007','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000038','D00000008','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000039','D00000009','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000040','D00000010','Y','Y','1');
+insert into RESERVATION_DETAILS values ('10000041','D00000011','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000042','D00000012','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000043','D00000013','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000044','D00000014','Y','Y','1');
+insert into RESERVATION_DETAILS values ('10000045','D00000015','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000046','D00000015','Y','N','3');
+insert into RESERVATION_DETAILS values ('10000047','D00000011','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000048','D00000004','Y','N','2');
+insert into RESERVATION_DETAILS values ('10000049','D00000012','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000050','D00000005','Y','Y','4');
+insert into RESERVATION_DETAILS values ('10000051','D00000001','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000052','D00000002','Y','N','4');
+insert into RESERVATION_DETAILS values ('10000053','D00000003','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000054','D00000004','Y','N','4');
+insert into RESERVATION_DETAILS values ('10000055','D00000002','Y','Y','3');
+insert into RESERVATION_DETAILS values ('10000056','D00000006','Y','N','2');
+insert into RESERVATION_DETAILS values ('10000057','D00000008','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000058','D00000003','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000059','D00000008','Y','Y','1');
+insert into RESERVATION_DETAILS values ('10000060','D00000003','Y','N','0');
+
+Select * from RESERVATION_DETAILS;
+
+--Testing for entity integrity--
+Select *
+	From Pets_Reservation
+		Where Reservation# is null or PetID is null
+----------------------------------------
+/*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE PETS_MEDICATIONS TABLE */
+
+create table PET_MEDICATIONS (
+   PetID		char(9)		Not null,
+   TimeAdministered	char(5)		Not null,
+   DateAdministered			Date		Not null,
+   Reservation#			Decimal (8,0)		Not null,
+   Primary Key (PetID,TimeAdministered,DateAdministered),
+   Foreign Key (Reservation#) REFERENCES RESERVATIONS(Reservation#),
+   Foreign Key (PetID) References Pets(PetID));
+
+
+insert into PET_MEDICATIONS values ('F00000001','18:00','01/15/2019','10000042');
+insert into PET_MEDICATIONS values ('F00000002','10:00','01/17/2019','10000047');
+insert into PET_MEDICATIONS values ('F00000003','18:00','09/05/2019','10000041');
+insert into PET_MEDICATIONS values ('F00000001','06:00','01/16/2019','10000042');
+insert into PET_MEDICATIONS values ('F00000005','16:30','05/05/2019','10000040');
+insert into PET_MEDICATIONS values ('F00000006','18:00','02/24/2019','10000017');
+insert into PET_MEDICATIONS values ('F00000007','12:00','05/24/2019','10000039');
+insert into PET_MEDICATIONS values ('F00000008','07:00','02/26/2019','10000011');
+insert into PET_MEDICATIONS values ('F00000009','09:00','05/27/2019','10000050');
+insert into PET_MEDICATIONS values ('F00000010','11:00','10/04/2019','10000055');
+insert into PET_MEDICATIONS values ('F00000011','15:00','03/06/2019','10000049');
+insert into PET_MEDICATIONS values ('F00000009','09:00','05/29/2019','10000050');
+insert into PET_MEDICATIONS values ('F00000013','12:00','04/02/2019','10000048');
+insert into PET_MEDICATIONS values ('F00000014','08:00','02/12/2019','10000025');
+insert into PET_MEDICATIONS values ('F00000002','22:00','01/17/2019','10000047');
+insert into PET_MEDICATIONS values ('D00000001','15:00','08/15/2019','10000019');
+insert into PET_MEDICATIONS values ('D00000002','09:30','09/29/2019','10000058');
+insert into PET_MEDICATIONS values ('D00000003','10:00','07/14/2019','10000010');
+insert into PET_MEDICATIONS values ('D00000004','07:30','02/05/2019','10000057');
+insert into PET_MEDICATIONS values ('D00000002','09:30','09/30/2019','10000058');
+insert into PET_MEDICATIONS values ('D00000006','08:30','08/02/2019','10000056');
+insert into PET_MEDICATIONS values ('D00000007','18:00','04/28/2019','10000033');
+insert into PET_MEDICATIONS values ('D00000008','14:00','03/19/2019','10000015');
+insert into PET_MEDICATIONS values ('D00000009','12:00','07/11/2019','10000029');
+insert into PET_MEDICATIONS values ('D00000010','11:00','03/09/2019','10000021');
+insert into PET_MEDICATIONS values ('D00000011','07:00','02/24/2019','10000034');
+insert into PET_MEDICATIONS values ('D00000009','12:00','07/13/2019','10000029');
+insert into PET_MEDICATIONS values ('D00000013','13:00','02/22/2019','10000030');
+insert into PET_MEDICATIONS values ('D00000014','17:00','06/25/2019','10000031');
+insert into PET_MEDICATIONS values ('F00000006','06:00','02/25/2019','10000017');
+
+
+Select * from PET_MEDICATIONS;
+
+
+--Testing for entity integrity--
+Select *
+	From Pet_Medications
+		Where PetID is null or TimeAdministered is null or DateAdministered is null
+---------------------------------------------------
+/*Testing for referential integrity through joins*/
+
+Select pm.petID, Dateadministered
+	From Pet_Medications pm join Pets_reservation pr 
+		on pm.petid=pr.petid
+
+/*show a list of all the pets that have been given a bath and checked out during the month of july*/
+Select Petname, PM.petID
+	From Pets P Join Pets_Reservation PM
+		on p.PetID=PM.PetID
+			Join Reservation_Details RD
+				on PM.Reservation#=RD.Reservation#
+					Where Dateofcheckout between '07-01-2019' and '07-30-2019'
+						and Bath = 'Y'
+
+--Proof that above data is correct--
+Select *
+	From Pets_Reservation
+		Where PetID = 'F00000010'
+--Also funny enough beaker is a cat so they gave a cat a bath--
+
+
+Select CFname, Petname
+	From Customers C join Pets P
+		On C.CustomerID=P.CustomerID
+			Order by CFname
+
+
+Select PR.PetID
+	From Pets_Reservation PR Join Pet_Medications PM
+		On PR.PetID = PM.PetID
+--------------------------------------------------------------------------------------------------------------------------------
+--MS4
+/* Milestone 4- Team 11- Team Phoenix */
+
+-------------------------------------------------------------------------------------------------------
+
+/* BASIC QUERIES */
+
+/* 1. Two INSERT statements in a row – the first one adding a new Pet, the second one adding a new
+Boarding for that Pet, should succeed. -ST */
+
+BEGIN TRANSACTION;
+
+INSERT into PETS values ('D00000456', 'C00000003', 'Wobbles', 'Dog', 'Great Dane', '23', '02/02/2018', 'M', 'Y');
+INSERT into COLOR values ('D00000456', 'Black');
+INSERT into COLOR values ('D00000456', 'Brown');
+INSERT into RESERVATIONS values ('10000061','12:15','02:32','11/03/2019','11/03/2019','S70000000', '20.00');
+INSERT into RESERVATION_DETAILS values ('10000061','D00000456','Y','Y','0');
+
+SELECT * FROM PETS;
+SELECT * FROM COLOR;
+SELECT * FROM RESERVATIONS;
+SELECT * FROM RESERVATION_DETAILS;
+
+COMMIT;
+--------------------------------------------------------------------------------------------------------
+/* 2. A similar two INSERT statements executed in the opposite order should fail. -ST */
+
+BEGIN TRANSACTION;
+
+INSERT into RESERVATION_DETAILS values ('10000062','D00000457','Y','Y','0');
+INSERT into RESERVATIONS values ('10000062','01:15','02:32','11/04/2019','11/04/2019','S70000000', '10.00');
+INSERT into COLOR values ('D00000457', 'Tan');
+INSERT into COLOR values ('D00000457', 'Brown');
+INSERT into PETS values ('D00000457', 'C00000006', 'Roxy', 'Dog', 'Shih-Tzu', '12', '05/02/2018', 'F', 'Y');
+
+SELECT * FROM RESERVATION_DETAILS;
+SELECT * FROM RESERVATIONS;
+SELECT * FROM COLOR;
+SELECT * FROM PETS;
+
+/* This transaction did not fully execute because Reservation's values needs to be entered before Reservations Detail's Values.
+Reservation# in RESERVATION_DETAILS is a foriegn key to RESERVATIONS. */ 
+
+ROLLBACK; 
+-------------------------------------------------------------------------------------------------------
+/* 3. Adding reservation details without a reservation should fail. -ST */
+
+BEGIN TRANSACTION
+
+INSERT into RESERVATION_DETAILS values ('10000063','D00000458','Y','Y','0');
+INSERT into RESERVATIONS values ('10000063','02:15','04:32','11/04/2019','11/04/2019','S90000000', '20.00');
+
+SELECT * FROM RESERVATION_DETAILS;
+SELECT * FROM RESERVATIONS;
+
+/* The reservation# in RESERVATION_DETAILS references back to the reservation# in RESERVATIONS, so the DBMS
+does not allow RESERVATION_DETAILS values to be entered before RESERVATIONS values. */
+
+ROLLBACK;
+--------------------------------------------------------------------------------------------------------
+/* 4. For a given reservation, it should be possible to see all of the descriptions and amounts that pertain to it. */
+Select *
+	From RESERVATION_DETAILS R, PETS_RESERVATION P
+		Where P.Reservation#= '10000004' and R.Reservation#='10000004'
+--------------------------------------------------------------------------------------------------------
+/*5. Trying to delete a Pet who has past on should fail*/
+begin transaction;
+delete from PETS where PetID ='F00000001'
+
+select * from pets
+rollback;
+--------------------------------------------------------------------------------------------------------
+/*6. Entering a new employee without any days absent from work should succeed.*/
+Insert into STAFF
+ values ('S11110000', 'recordkeeper', 'Alyssa', 'Toliver', '3560 Sawgrass Dr.', 'Anthem', '85086', 'AZ', 'US', '6309853333', 12.50, '12-13-18','12345678','91123456','0.06','.05');
+
+ select * from STAFF;
+ --------------------------------------------------------------------------------------------------------
+/* 7. Adding a pet to the database, and putting in a customerID that does not exist in the database. -AB */
+
+Insert into PETS Values ('F00000046','C00000089','Snowflake','Cat','Tabby','6.5','08/14/2009','F','Y');
+--------------------------------------------------------------------------------------------------------
+/* 8. Basic Query */ -AB
+
+--Inserting a value of $100,000 for one paycheck in the database should fail --
+
+Insert into PAYCHECK values ('S10000000','5','2014-10-09',100000,1000000) 
+
+--------------------------------------------------------------------------------------------------------
+/* 9. Construct 4 other preliminary tests to show that your database design works - select tests that
+you know will make your design fail where it should. 
+
+Can not input word values into a numeric column (for those not tech savy) 
+This specific example is trying to put in $21 as the base fee -TD */
+
+Insert into RESERVATIONS values ('10000084','12:17','10:56','02/22/2019','02/23/2019','S80000000','Twenty-One');
+--------------------------------------------------------------------------------------------------------
+/* 10. Construct 4 other preliminary tests to show that your database design works - select tests that
+you know will make your design fail where it should. 
+
+Can't give yourself a bonus in a paycheck. Though, $900,000 would be nice. -TD */
+
+Insert into paycheck values ('S10000000', 5,'2014-10-9',90000.00,904261.20);
+-------------------------------------------------------------------------------------------------------
+
+/* ADVANCED QUERIES */
+
+/* 1. GROUP BY/HAVING clause */
+
+/* How many female dogs do we have in the database? */
+
+Select Count(petid) as 'Female dogs in the database'
+	From Pets
+		Group by Species, gender
+			Having Species='dog' and Gender='f';
+--------------------------------------------------------------------------------------------------------
+/* 2. Group by/Having Clause
+
+Steve (The new guy) isn't sure if he checked out a dog on the 5th of february or if
+somehow it is hiding in the building. Check the database to see if a dog was picked up by its owner
+on that day*/
+
+Select DateofCheckOut, Count(*) as 'Dogs checked out that day'
+	From Reservations R Join RESERVATION_DETAILS RD
+		On R.Reservation#=RD.Reservation#
+			Where petID like 'D%'
+				Group by DateofCheckOut
+					Having DateofCheckOut='2019-02-05';
+--------------------------------------------------------------------------------------------------------
+
+/* 3. GROUP BY/HAVING clause -TD */
+
+/* How many Pets have had more than one dosage of medication while staying with us? */
+
+Select petid as "Pets with more than 1 Administration of Medication", count(petid) as "Number of Dosages"
+	from PET_MEDICATIONS
+	group by petid
+	having count(petid)>1;
+--------------------------------------------------------------------------------------------------------	
+/* 4. Fully NESTED query (no joins) that combines 3 or more data tables. -TD */
+
+/* Who had reservation# 10000026? They forgot to pay! */
+	
+Select CFName, CLName, PhoneAreaCode, Phone
+	from Customers
+		where customerid in (Select CustomerID
+					from Pets
+						where petid in(Select Petid
+								from RESERVATION_DETAILS
+									where Reservation# = '10000026'));
+--------------------------------------------------------------------------------------------------------
+/* 5. Anthony Abraham wants to know if his pet was given medicine and if so, at what time. Find the information 
+and store it as Abrahams_Visit. -ST */
+
+CREATE VIEW Abrahams_Visit AS
+SELECT COUNT(TimeAdministered) "Number Of Meds Given", TimeAdministered
+ FROM PET_MEDICATIONS 
+  WHERE PetID IN
+    (SELECT PetID 
+       FROM PETS
+         WHERE CustomerID IN
+          (SELECT CustomerID 
+	        FROM CUSTOMERS
+	         WHERE CLName = 'Abraham'))
+GROUP BY TimeAdministered;
+
+SELECT * FROM Abrahams_Visit;
+--------------------------------------------------------------------------------------------------------
+/* 6. Management want to know how the second half of the year's third quarter went. 
+List the dates of check in and prices paid. Store the information in 2NDhalf_3RDquarter. 
+Order by oldest to newest. -ST */
+
+CREATE VIEW "2NDhalf_3RDquarter" AS
+SELECT DateOfCheckIn, Price
+ FROM RESERVATIONS 
+  WHERE DateOfCheckIn Between '09/01/19' and '10/31/19'
+GROUP BY DateOfCheckIn, Price; 
+
+SELECT *
+ FROM [2NDhalf_3RDquarter]
+  ORDER BY DateOfCheckIN;
+--------------------------------------------------------------------------------------------------------
+/* 7. Which Pets have been given medications before? Store the result as Pets_Given_Medication. -TD */
+
+Create view Pets_Given_Medication as
+	select PetID
+		from pet_medications
+		group by petid
+
+		select* from Pets_Given_Medication;
+--------------------------------------------------------------------------------------------------------
+/* 8. Create view Tempe_Pets_Colors and write the fully nested statement to list the PetID and color of the pet for a pet 
+whose owners address is in the city of Tempe.-AA*/
+
+Create View Tempe_Pets_Colors AS
+
+select PetID,Color
+	from COLOR
+		where PetID IN
+	(select  PetID
+		from PETS
+			where CustomerID in
+				(select CustomerID
+					from CUSTOMERS
+						where City='Tempe'));
+select * 
+	From Tempe_Pets_Colors
+--------------------------------------------------------------------------------------------------------
+/* 9. Write the fully nested query to display the city and state of all guests who 
+checked in a pet who did get a bath.-AA*/
+
+
+Select C.City, C.State, C.CustomerID
+	from Customers C
+		where CustomerID in 
+		(select CustomerID
+			from PETS
+				where PetID in
+			(select PetID
+				from RESERVATION_DETAILS
+					where Bath='Y'));
+-----------------------------------------------------------------------------------------------------------
+--MS5
+
+/* Team 11- Team Phoenix- M5 */
+--------------------------------------------------------------------------------------------------------
+/* Section 1- Transactions */
+--------------------------------------------------------------------------------------------------------
+/* 1. When a new multi-colorpet is added to the database, also addthe corresponding records to the Color 
+table and the owners table. */
+
+begin transaction;
+
+insert into CUSTOMERS
+	values('C00000041','Rebecca','January','123 Moser Dr','Phoenix','AZ','85001','USA',480,
+	'123-7777','7392810180845555');
+insert into PETS
+	values('D00000020','C00000041','Bark','Dog','Maltese','40','01/01/2019','M','Y');
+insert into COLOR
+	values('D00000020','White');
+insert into COLOR
+	values('D00000020','Brown');
+insert into COLOR
+	values('D00000020','Black');
+
+Commit;
+
+select * from CUSTOMERS;
+select * from PETS;
+select * from COLOR;
+
+--AA --ST
+--------------------------------------------------------------------------------------------------------
+/* 2. When adding a new part-time employee, also add the record to the ‘child’ table to reflect all of the 
+employee’s information. */
+
+BEGIN TRANSACTION; 
+
+Insert into STAFF 
+  values ('S14000000', 'receptionist', 'Shelley', 'Robinson', '8788 N. Rocker Ln.', 'Anthem', '85086', 
+  'AZ', 'US', '6029125678', 11.00, '11-18-19','87678934','12356784','0.06','.05');
+Insert into PART_TIMERS 
+  values ('S14000000', 'Sabrina', 'Jacobs', 'Margaret', '4807890045');
+
+COMMIT;
+
+Select * from STAFF;
+Select * from PART_TIMERS;
+
+--ST -AA
+--------------------------------------------------------------------------------------------------------
+/* Section 2- Trigger */
+--------------------------------------------------------------------------------------------------------
+/* 1.(10) TRIGGER: Add a trigger to your reservation table (or equivalent) so that whenever
+ a new reservationoccurs (i.e. a new INSERT), automatically create the record for the 
+ reservation details table.Time in & out and price can be added after the appointment (nulls allowed). 
+ Professor Moser approved doing a trigger on absences*/
+
+
+Create Trigger AddDaysAbsent /* New trigger table approved by moser*/
+	on Absences
+		After Insert
+As  /* Creating a trigger on Absences to add 1 to the staff table days absent column*/
+	Update Staff
+		Set DaysAbsent=Daysabsent + 1 
+			Where StaffID=(Select StaffID
+				From Inserted);
+
+Drop Trigger AddDaysAbsent
+
+		
+--AB --TD
+--------------------------------------------------------------------------------------------------------
+ /* Section 2- Procedure */
+--------------------------------------------------------------------------------------------------------
+ /* (10) PROCEDURE:  When an employee has a sick day, add a new record to the SickDaysLog 
+to record the employee’sID, name, date sick, and the total number of sick days thus far 
+including the one addedfor this employee. Hint:You will need to create a SickDaysLogto 
+keep track of this data.  The procedure will execute after a new sick day has been recorded 
+for the employee. */
+
+Create Table SickDaysLog(
+	StaffID  Char(9) Not Null,
+	Fname  Varchar(20),
+	SickDate   Date,
+	TotalSickdays VarChar(3),
+	Primary Key (StaffID, SickDate),
+	foreign key (StaffID) References Staff(StaffID));
+
+Create Procedure SickDay
+	@StaffID Char(9),
+	@Date Date as 
+	Insert Into SickDaysLog
+		Values (@StaffID, 
+			(Select FName from Staff where staffID = @staffid), 
+			@Date, (Select COUNT(*) From SickDaysLog Where StaffID=@StaffID)+1); /* Look at most recent 
+			date for the correct amount of sick days */
+			
+--ST --AA --AB --TD
+--------------------------------------------------------------------------------------------------------
+/* Section 3- Indexes */
+--------------------------------------------------------------------------------------------------------
+/* 1.(2) Identify the attributes (at least 2) that should have secondary indexes 
+defined (cluster index is already created) to speed up the query you will define in #3.
+Take a snapshot of the tables you will use (select * from each table and show the attributes
+and a few rows of data in each one). */
+
+/* A secondary index on FName in STAFF Table and PetName in PETS Table */
+
+--ST
+--------------------------------------------------------------------------------------------------------
+/* 2.(2) Write the SQL commands to create the secondary indexes for the 2 attributes identified in #1.  
+Give reasons for each attribute selected (use comments).  Take a snapshot of the SQL code for both indexes. */
+
+CREATE INDEX FNameX ON STAFF (FName);
+
+CREATE INDEX PetNameX ON PETS (PetName);
+
+--ST
+--------------------------------------------------------------------------------------------------------
+/* 3.(2) Create an advancedjoinquery and execute (use any multiple tables you wish).  
+Show the query, the data results, the time to complete, and the query plan 
+(take snapshots of each).  The idea here is to create a query that will tax the 
+computer resources –force the DBMS to use its resources. */
+
+Select P.PetID, PetName, Breed, RD.Reservation#, Price, DateofCheckIn, 
+S.STAFFID, CONCAT(FName, ' ', LName) "Staff Name", CFName, Color
+  From PETS P JOIN RESERVATION_DETAILS RD
+    On P.PetID = RD.PetID
+	  Join RESERVATIONS R
+	   On Rd.Reservation# = R.Reservation#
+	  Join Staff S
+	   On S.StaffID = R.StaffID
+	  Join CUSTOMERS C
+	   On C.CustomerID = P.CustomerID
+	  Join COLOR Co
+	   On CO.PetID = P.PetID
+	Order By FName;
+	
+--TD --AB --AA --ST
+--------------------------------------------------------------------------------------------------------
+/* 4.(2) Optimize & execute the query in #3.  Show the query, the data results, the time to complete, and 
+the query plan (take snapshots of each). */
+
+--(In the pdf file). 
+--------------------------------------------------------------------------------------------------------
+/* 5.(2) Comment on the differences between the results in parts 3 & 4.  How did you expect the query plans 
+to be different?  Did you gain time, or lose time –why?  Based on the query that you executed inpart 3, 
+what did you expect to happen and why? */
+
+--(In the pdf file).
+--------------------------------------------------------------------------------------------------------
+/* Section 4- Analytics Dashboard Overview */
+--------------------------------------------------------------------------------------------------------
+/* 1. Services by Customer's Pet */
+
+Create View ServicesByPet as 
+	Select C.CustomerID, C.CFName "Customer First Name",RD.Reservation#,P.PetID,RD.Bath,RD.NumMedGiven,P.PetName
+		from Customers C Join Pets P
+			on C.CustomerID=P.CustomerID
+		Join RESERVATION_DETAILS RD
+			on RD.PetID=P.PetID; 
+			
+--AA
+--------------------------------------------------------------------------------------------------------
+/* 2. Number of Reservations Per Customer */
+
+Create View  Number_of_Reservations_per_Customer as
+Select concat(cfname,' ',clname) as "Customers", Count(r.reservation#) as "Number of Times Stayed"
+	From Customers C join Pets p
+		On c.CustomerID = p.CustomerID
+		Join Reservation_Details RD
+		On p.Petid = RD.Petid
+		Join Reservations R
+		On R.Reservation# = RD.Reservation#
+	Group By concat(cfname,' ',clname)
+
+--TD
+--------------------------------------------------------------------------------------------------------
+/* 3. Revenue by Customer */
+
+Create View RevenueByCustomer
+	AS
+Select C.CustomerID, Cfname, PetName, R.reservation#, Price
+	From Customers C Join pets P
+		on C.CustomerID=P.CustomerID
+			Join Reservation_Details RD
+		on RD.PetID=P.PetID
+			Join Reservations R
+		on R.Reservation#=RD.Reservation#;
+--AB
+--------------------------------------------------------------------------------------------------------
+/* 4. Who Staff Worked With */
+
+CREATE VIEW Staff_Worked_With AS
+SELECT S.StaffID, Concat(FName, ' ',LName) "Staff Name", P.PetID, 
+PetName, C.CustomerID, Concat(CFName, ' ', CLName) "Customer Name"
+ FROM Staff S JOIN RESERVATIONS R
+  ON S.StaffID = R.StaffID
+  JOIN RESERVATION_DETAILS RD
+  ON R.Reservation# = RD.Reservation#
+  JOIN PETS P
+  ON RD.PetID = P.PetID
+  JOIN CUSTOMERS C
+  ON P.CustomerID = C.CustomerID;
+
+SELECT *
+ FROM Staff_Worked_With
+  ORDER BY PETID;
+  
+--ST
+----------------------------------------------------------------------------------------------------------
+--MS5 View Script
+	Create View PamperedPets as
+Select C.CustomerID, CFName, C.City, C.State, C.zip, p.PetID, PetName, Species, RD.Reservation#, Bath, Vaccinations,
+		NumMedGiven, DateofCheckIn, DateOfCheckOut, Price, S.StaffID, FName, TimeIn, TimeGone
+	from Customers C Join Pets P
+		ON C.CustomerID=P.CustomerID
+	Join RESERVATION_DETAILS RD 
+		on RD.PetID=P.PetID
+	Join Reservations R 
+		On R.Reservation#=RD.Reservation#
+	Join Staff S
+		On S.StaffID=R.StaffID;
+----------------------------------------------------------------------------------------------------------------------------
+Create View  Number_of_Reservations_per_Customer as
+
+Select concat(cfname,' ',clname) as "Customers", Count(r.reservation#) as "Number of Times Stayed"
+	From Customers C 
+		Join Pets p
+			On c.CustomerID = p.CustomerID
+		Join Reservation_Details RD
+			On p.Petid = RD.Petid
+		Join Reservations R
+			On R.Reservation# = RD.Reservation#
+	Group By concat(cfname,' ',clname)
