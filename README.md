@@ -7,3 +7,5 @@ They have been in business for 5 years and their current information is not comp
 
 What they wanted from us:
 To get the record keeping up to date and to offer more services to their customers. 
+
+The other branches in this repository contain SQL queries unrelated to Pampered Pets. These queries were created for data integrity testing different databases. 
